@@ -22,7 +22,10 @@ def produtosVer(request):
 # CLIENTE
 
 def clientes(request):
-    context = {'location': 'clientes'}
+    clientes = Empresa.objects.all()
+    
+    context = {'location': 'clientes',
+               'clientes': clientes}
     return render(request, 'registros/clientes.html', context)
 
 
@@ -32,7 +35,7 @@ def clientesNovo(request):
 
 
 def clientesVer(request, cliente_id):
-    cliente = get_object_or_404(Company, pk=cliente_id)
+    cliente = get_object_or_404(Empresa, pk=cliente_id)
     
     context = {'location': 'clientes',
                'cliente': cliente}
@@ -40,7 +43,7 @@ def clientesVer(request, cliente_id):
 
 
 def clientesEditar(request, cliente_id):
-    cliente = get_object_or_404(Company, pk=cliente_id)
+    cliente = get_object_or_404(Empresa, pk=cliente_id)
 
     context = {'location': 'clientes',
                'cliente': cliente}
@@ -48,7 +51,7 @@ def clientesEditar(request, cliente_id):
 
 
 def clientesApagar(request, cliente_id):
-    cliente = get_object_or_404(Company, pk=cliente_id)
+    cliente = get_object_or_404(Empresa, pk=cliente_id)
     nomeApagado = cliente.nome
 
     context = {'location': 'clientes',
