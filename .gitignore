@@ -10,3 +10,6 @@ __pycache__/
 db.sqlite3
 
 /media/
+
+# settings.py may have different DBs, for example
+/sistema/settings.py
