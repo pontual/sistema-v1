@@ -12,7 +12,7 @@ from registros.models import Moeda, Produto, Empresa
 class Transacao(Model):
     vendedor = ForeignKey(Empresa, related_name="empresa_vendedora", on_delete=SET_NULL, null=True)
     comprador = ForeignKey(Empresa, related_name="empresa_compradora", on_delete=SET_NULL, null=True)
-    date_recorded = DateField(default=date.today)
+    data = DateField(default=date.today)
 
     class Meta:
         verbose_name_plural = "Transações"    
