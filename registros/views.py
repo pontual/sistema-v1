@@ -22,7 +22,7 @@ def produtosVer(request):
 # CLIENTE
 
 def clientes(request):
-    clientes = Empresa.objects.all()
+    clientes = Empresa.objects.all().order_by('nome')
     
     context = {'location': 'clientes',
                'clientes': clientes}
