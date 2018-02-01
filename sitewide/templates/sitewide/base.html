@@ -43,6 +43,9 @@
                         <a class="mdc-list-item{% if location == "vendas" %} mdc-list-item--selected{% endif %}" href="{% url 'movimento:vendas' %}">
                             <i class="material-icons mdc-list-item__graphic" aria-hidden="true">airport_shuttle</i>Vendas
                         </a>
+                        <a class="mdc-list-item" href="{% url 'admin:index' %}">
+                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">supervisor_account</i>Admin
+                        </a>
                     </div>
                 </nav>
             </nav>
