@@ -8,6 +8,10 @@
 
 {% block main %}
 
+<a class="mdc-button mdc-button--raised" href="{% url "registros:clientesNovo" %}">
+    Cliente Novo
+</a>
+
 {% for cliente in clientes %}
 <div class="mdc-card">
     <section class="mdc-card__primary">

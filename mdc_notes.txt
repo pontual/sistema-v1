@@ -1,0 +1,25 @@
+MDC Web Notes
+
+Button (Link)
+-------------
+
+<a class="mdc-button mdc-button--raised" href="{% url "registros:clientesNovo" %}">
+    Cliente Novo
+</a>
+
+
+Button (Submit)
+---------------
+
+
+
+
+Text Field
+----------
+
+            <div class="mdc-text-field">
+                <input type="text" name="nome" id="nome" class="mdc-text-field__input">
+                <label class="mdc-text-field__label" for="nome">Nome</label>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+

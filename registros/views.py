@@ -31,7 +31,7 @@ def clientes(request):
 
 def clientesNovo(request):
     context = {'location': 'clientes'}
-    return render(request, 'registros/clientes.html', context)
+    return render(request, 'registros/clientesNovo.html', context)
 
 
 def clientesVer(request, cliente_id):
