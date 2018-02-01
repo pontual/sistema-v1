@@ -1,5 +1,17 @@
 MDC Web Notes
 
+Card
+----
+
+                <div class="mdc-card">
+                    <section class="mdc-card__primary">
+                        <h1 class="mdc-card__title mdc-card__title--large">{% block mainTitle %}{% endblock %}</h1>
+                        <h2 class="mdc-card__subtitle">{% block mainSubtitle %}{% endblock %}</h2>
+                    </section>
+                    <section class="mdc-card__supporting-text">
+	                ...
+                    
+
 Button (Link)
 -------------
 
@@ -22,4 +34,5 @@ Text Field
                 <label class="mdc-text-field__label" for="nome">Nome</label>
                 <div class="mdc-text-field__bottom-line"></div>
             </div>
+
 

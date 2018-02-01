@@ -54,15 +54,7 @@
 
         <main>
             <div class="mdc-toolbar-fixed-adjust">
-                <div class="mdc-card">
-                    <section class="mdc-card__primary">
-                        <h1 class="mdc-card__title mdc-card__title--large">{% block mainTitle %}{% endblock %}</h1>
-                        <h2 class="mdc-card__subtitle">{% block mainSubtitle %}{% endblock %}</h2>
-                    </section>
-                    <section class="mdc-card__supporting-text">
-                        {% block main %}{% endblock %}
-                    </section>
-                </div>
+                {% block main %}{% endblock %}
             </div>
         </main>
 

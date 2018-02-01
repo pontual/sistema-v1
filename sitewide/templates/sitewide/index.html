@@ -1,10 +1,16 @@
 {% extends 'sitewide/base.html' %}
 
 {% block title %}Home{% endblock %}
-{% block headerTitle %}{{confs.empresa_ativa.nome}}{% endblock %}
-
-{% block mainTitle %}Sistema{% endblock %}
 
 {% block main %}
-Bem-vindo ao Sistema
+
+<div class="mdc-card">
+    <section class="mdc-card__primary">
+        <h1 class="mdc-card__title mdc-card__title--large">Sistema</h1>
+    </section>
+    <section class="mdc-card__supporting-text">
+        Bem-vindo ao Sistema, {{confs.empresa_ativa.nome}}
+    </section>
+</div>
+
 {% endblock %}
