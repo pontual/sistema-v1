@@ -1,0 +1,20 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Clientes - Registros{% endblock %}
+{% block headerTitle %}Registros - Clientes{% endblock %}
+
+{% block mainTitle %}Cliente Novo{% endblock %}
+
+
+{% block main %}
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit">
+</form>
+
+{% endblock %}

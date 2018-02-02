@@ -2,74 +2,12 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>{% block title %}{% endblock %} - Sistema</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="{% static "mdc/mdc0.28.css" %}">
-    </head>
-    <body class="mdc-typography">
-
+    <body>
+        <p>
+            <a href="{% url "admin:index" %}">Admin</a>
+        </p>
+        Base Template, no CSS Framework
         
-        <header class="mdc-toolbar mdc-toolbar--fixed">
-            <div class="mdc-toolbar__row">
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <button class="demo-menu material-icons mdc-toolbar__menu-icon">menu</button>
-                    <span class="mdc-toolbar__title catalog-title">Sistema - {% block headerTitle %}{% endblock %}</span>
-                </section>
-            </div>
-        </header>
-
-        
-        <aside class="mdc-drawer mdc-drawer--temporary">
-            <nav class="mdc-drawer__drawer">
-                <nav class="mdc-drawer__content mdc-list-group">
-                    <div class="mdc-list">
-                        <a class="mdc-list-item{% if location == "home" %} mdc-list-item--selected{% endif %}" href="{% url 'sitewide:index' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>Home
-                        </a>
-                        <a class="mdc-list-item{% if location == "clientes" %} mdc-list-item--selected{% endif %}" href="{% url 'registros:clientes' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person</i>Clientes
-                        </a>
-                        <a class="mdc-list-item{% if location == "produtos" %} mdc-list-item--selected{% endif %}" href="{% url 'registros:produtos' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">view_module</i>Produtos
-                        </a>
-                        <a class="mdc-list-item{% if location == "compras" %} mdc-list-item--selected{% endif %}" href="{% url 'movimento:compras' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">shopping_cart</i>Compras
-                        </a>
-                        <a class="mdc-list-item{% if location == "vendas" %} mdc-list-item--selected{% endif %}" href="{% url 'movimento:vendas' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">airport_shuttle</i>Vendas
-                        </a>
-                        <a class="mdc-list-item" href="{% url 'admin:index' %}">
-                            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">supervisor_account</i>Admin
-                        </a>
-                    </div>
-                </nav>
-            </nav>
-        </aside>
-        
-
-        <main>
-            <div class="mdc-toolbar-fixed-adjust">
-                {% block main %}{% endblock %}
-            </div>
-        </main>
-
-        
-        <script src="{% static "mdc/mdc0.28.js" %}"></script>
-        <script>mdc.autoInit();
-
-         var drawerEl = document.querySelector('.mdc-drawer');
-         var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
-         var drawer = new MDCTemporaryDrawer(drawerEl);
-         document.querySelector('.demo-menu').addEventListener('click', function() {
-             drawer.open = true;
-         });
-
-        </script>
-        {% block addJS %}{% endblock %}
+        {% block main %}{% endblock %}
     </body>
 </html>
