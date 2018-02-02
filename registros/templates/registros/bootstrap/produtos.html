@@ -1,0 +1,32 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Produtos - Registros{% endblock %}
+{% block headerTitle %}Registros - Produtos{% endblock %}
+
+{% block mainTitle %}Produtos{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:produtosNovo" %}" class="btn btn-primary">Produto Novo</a>
+{% endblock %}
+
+
+{% block main %}
+
+{% for produto in produtos %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ produto.foto.url }}" alt="{{ produto.codigo }}">
+    <div class="card-body">
+        <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
+            <h5 class="card-title">{{ produto.nome }} ({{ produto.id }})</h5>
+        </a>
+           
+        <p class="card-text">
+            
+            {{ produto.codigo }}
+            {{ produto.nome }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

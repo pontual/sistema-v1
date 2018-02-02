@@ -4,16 +4,15 @@
 
 {% block mainTitle %}Home{% endblock %}
 
+{% block actionTop %}
+<a href="{% url "registros:clientes" %}" class="btn btn-primary">Clientes</a>
+
+<a href="{% url "registros:produtos" %}" class="btn btn-primary">Produtos</a>
+
+{% endblock %}
+
 {% block main %}
 
 Bem-vindo ao Sistema, {{confs.empresa_ativa.nome}}
-
-<br><br>
-
-<p>
-    <a href="{% url "registros:clientes" %}" class="btn btn-primary">Todos os Clientes</a>
-
-    
-</p>
 
 {% endblock %}

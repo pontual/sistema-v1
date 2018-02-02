@@ -12,12 +12,30 @@ def index(request):
 # PRODUTO
 
 def produtos(request):
-    return render(request, 'registros/produtos.html')
+    produtos = Produto.objects.all().order_by('codigo')
+
+    context = {'produtos': produtos}
+    return render(request, 'registros/bootstrap/produtos.html', context)
+
+
+def produtosNovo(request):
+    return render(request, 'registros/index.html')
 
 
 def produtosVer(request):
     return render(request, 'registros/index.html')
 
+
+def produtosEditar(request, produto_id):
+    return render(request, 'registros/index.html')
+
+
+def produtosConfirmarApagar(request):
+    return render(request, 'registros/index.html')
+
+
+def produtosApagar(request):
+    return render(request, 'registros/index.html')
 
 # CLIENTE
 

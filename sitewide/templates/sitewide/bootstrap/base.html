@@ -50,15 +50,24 @@
                 </form>
             </div>
         </nav>
-        <main role="main" class="container">
+
+        
+        <main role="main">
             <div class="mainContent">
                 {% block actionTop %}{% endblock %}
                 <br><br>
+                
                 <h3>{% block mainTitle %}{% endblock %}</h3>
                 
                 {% block main %}{% endblock %}
             </div>
         </main>
+
+        <footer>
+            <small>
+                &copy; 2018 Pontual Exportação e Importação Ltda.
+            </small>
+        </footer>
         
         <script src="{% static "jquery/jquery-3.3.1.min.js" %}"></script>
         <script src="{% static "bootstrap/bootstrap.bundle4.0.0.min.js" %}"></script>
