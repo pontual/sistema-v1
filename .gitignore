@@ -11,6 +11,8 @@ db.sqlite3
 
 /media/
 
+/experimental/
+
 # shortcuts
 runserver
 makemigrations
@@ -19,5 +21,4 @@ migrate
 # settings.py may have different DBs, for example
 /sistema/settings.py
 /sistema/mysql.cnf
-
 
