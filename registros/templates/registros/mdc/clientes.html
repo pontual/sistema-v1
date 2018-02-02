@@ -1,0 +1,34 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Clientes - Registros{% endblock %}
+{% block headerTitle %}Registros - Clientes{% endblock %}
+
+{% block mainTitle %}Clientes{% endblock %}
+
+
+{% block main %}
+
+<div class="mdc-card">
+    <section class="mdc-card__primary">
+        <h1 class="mdc-card__title mdc-card__title--large">Clientes</h1>
+    </section>
+    <section class="mdc-card__supporting-text">
+
+        <a class="mdc-button mdc-button--raised" href="{% url "registros:clientesNovo" %}">
+            Cliente Novo
+        </a>
+
+        {% for cliente in clientes %}
+        <div class="mdc-card">
+            <section class="mdc-card__primary">
+                <h1 class="mdc-card__title mdc-card__title--large">{{cliente.nome}}</h1>
+            </section>
+            <section class="mdc-card__supporting-text">
+                {{cliente.nome}}
+            </section>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+
+{% endblock %}
