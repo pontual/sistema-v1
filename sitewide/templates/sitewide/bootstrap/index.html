@@ -2,10 +2,18 @@
 
 {% block title %}Home{% endblock %}
 
-{% block headerTitle %}Home{% endblock %}
+{% block mainTitle %}Home{% endblock %}
 
 {% block main %}
 
 Bem-vindo ao Sistema, {{confs.empresa_ativa.nome}}
+
+<br><br>
+
+<p>
+    <a href="{% url "registros:clientes" %}" class="btn btn-primary">Todos os Clientes</a>
+
+    
+</p>
 
 {% endblock %}

@@ -27,13 +27,20 @@ class Produto(Model):
 
 class Empresa(Model):
     nome = CharField(max_length=255)
+
+    # Endereço
     rua = CharField(max_length=255, blank=True)
     cidade = CharField(max_length=63, blank=True)
     estado = CharField(max_length=63, blank=True)
     cep = CharField(max_length=15, blank=True)
     pais = CharField(max_length=31, blank=True)
+
+    # Contato
+    contato = CharField(max_length=63, blank=True) 
     telefone = CharField(max_length=31, blank=True)
     email = EmailField(blank=True)
+
+    # Cadastros 
     cadastro_nacional = CharField(max_length=35, blank=True)
     cadastro_estadual = CharField(max_length=35, blank=True)
     cadastro_municipal = CharField(max_length=35, blank=True)
@@ -48,6 +55,9 @@ class Funcionario(Model):
     user = models.OneToOneField(User, on_delete=CASCADE)
     empregador = ForeignKey(Empresa, on_delete=SET_NULL, null=True)
 
+    class Meta:
+        ordering = ['user__username'] 
+    
     def __str__(self):
         return self.user.username
 

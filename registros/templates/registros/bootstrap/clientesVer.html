@@ -1,0 +1,42 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Clientes - Registros{% endblock %}
+{% block headerTitle %}Registros - Clientes{% endblock %}
+
+{% block mainTitle %}Cliente - {{ cliente.nome }}{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:clientes" %}" class="btn btn-primary">Todos os Clientes</a>
+
+{% endblock %}
+
+
+{% block main %}
+
+<a href="{% url "registros:clientesEditar" cliente_id=cliente.id %}" class="btn btn-secondary">Editar</a>
+
+<p>
+    <b>Endereço:</b>
+    {{ cliente.rua }},
+    {{ cliente.cidade }},
+    {{ cliente.estado }},
+    {{ cliente.pais }},
+    CEP {{ cliente.cep }}
+</p>
+
+<p>
+    <b>Contato:</b>
+    {{ cliente.contato }}<br>
+    {{ cliente.telefone }}<br>
+    {{ cliente.email }}
+</p>
+
+<p>
+    <b>Cadastros:</b>
+    <br>
+    CNPJ {{ cliente.cadastro_nacional }}<br>
+    I.E. {{ cliente.cadastro_estadual }}<br>
+    I.M. {{ cliente.cadastro_municipal }}
+</p>
+
+{% endblock %}

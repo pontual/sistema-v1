@@ -28,7 +28,7 @@ def clientes(request):
     
     context = {'location': 'clientes',
                'clientes': clientes}
-    return render(request, 'registros/clientes.html', context)
+    return render(request, 'registros/bootstrap/clientes.html', context)
 
 
 def clientesNovo(request):
@@ -104,7 +104,7 @@ def clientesVer(request, cliente_id):
     
     context = {'location': 'clientes',
                'cliente': cliente}
-    return render(request, 'registros/cliente.html', context)
+    return render(request, 'registros/bootstrap/clientesVer.html', context)
 
 
 def clientesEditar(request, cliente_id):

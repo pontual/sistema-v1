@@ -1,0 +1,30 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Clientes - Registros{% endblock %}
+{% block headerTitle %}Registros - Clientes{% endblock %}
+
+{% block mainTitle %}Clientes{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:clientesNovo" %}" class="btn btn-primary">Cliente Novo</a>
+{% endblock %}
+
+
+{% block main %}
+
+{% for cliente in clientes %}
+<div class="card">
+    <div class="card-body">
+        <a href="{% url "registros:clientesVer" cliente_id=cliente.id %}">
+            <h5 class="card-title">{{ cliente.nome }} ({{ cliente.id }})</h5>
+        </a>
+           
+        <p class="card-text">
+            {{ cliente.rua }}
+            {{ cliente.cidade }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
