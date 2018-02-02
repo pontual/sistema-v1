@@ -37,13 +37,27 @@ def clientesNovo(request):
     try:
         nome = request.POST['nome']
         rua = request.POST['rua']
+        cidade = request.POST['cidade']
+        estado = request.POST['estado']
+        cep = request.POST['cep']
+        pais = request.POST['pais']
+        telefone = request.POST['telefone']
+        email = request.POST['email']
+        cnpj = request.POST['cnpj']
+        inscricao_est = request.POST['inscricao_est']
+        inscricao_mun = request.POST['inscricao_mun']
     except KeyError:
-        context['erro'] = "Informações incompletas."
+
         return render(request, 'registros/clientesNovo.html', context)
     else:
-        cliente_novo = Empresa(nome=nome, rua=rua)
-        cliente_novo.save()
-        cliente_id = cliente_novo.id 
+        cli_novo = Empresa(nome=nome, rua=rua, cidade=cidade,
+                           estado=estado, cep=cep, pais=pais,
+                           telefone=telefone, email=email,
+                           cadastro_nacional=cnpj,
+                           cadastro_estadual=inscricao_est,
+                           cadastro_municipal=inscricao_mun)
+        cli_novo.save()
+        cliente_id = cli_novo.id 
         return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id})) 
 
 
