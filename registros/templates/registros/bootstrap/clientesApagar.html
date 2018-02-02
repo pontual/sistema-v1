@@ -1,0 +1,24 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Clientes - Registros{% endblock %}
+{% block headerTitle %}Registros - Clientes{% endblock %}
+
+{% block mainTitle %}Realmente apagar {{ cliente.nome }}?{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:clientes" %}" class="btn btn-primary">Todos os Clientes</a>
+
+{% endblock %}
+
+
+{% block main %}
+
+<h3>
+
+<a href="{% url "registros:clientesEditar" cliente_id=cliente.id %}" class="btn btn-danger">Sim, apagar</a>
+
+<br><br><br>
+
+<a href="{% url "registros:clientesVer" cliente_id=cliente.id %}" class="btn btn-primary">Não, voltar</a>
+
+{% endblock %}
