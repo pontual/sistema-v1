@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Produto, Empresa
 
@@ -31,7 +33,18 @@ def clientes(request):
 
 def clientesNovo(request):
     context = {'location': 'clientes'}
-    return render(request, 'registros/clientesNovo.html', context)
+
+    try:
+        nome = request.POST['nome']
+        rua = request.POST['rua']
+    except KeyError:
+        context['erro'] = "Informações incompletas."
+        return render(request, 'registros/clientesNovo.html', context)
+    else:
+        cliente_novo = Empresa(nome=nome, rua=rua)
+        cliente_novo.save()
+        cliente_id = cliente_novo.id 
+        return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id})) 
 
 
 def clientesVer(request, cliente_id):
