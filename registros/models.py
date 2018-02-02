@@ -20,7 +20,7 @@ class Produto(Model):
     codigo = CharField(max_length=63)
     nome = CharField(max_length=127)
     por_caixa = IntegerField(default=1)
-    foto = ImageField(upload_to='products/')
+    foto = ImageField(upload_to='products/', blank=True, null=True)
 
     def __str__(self):
         return self.codigo
