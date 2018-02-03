@@ -1,4 +1,5 @@
 from datetime import date
+from collections import defaultdict
 
 from django.db import models
 
@@ -18,6 +19,12 @@ class Transacao(Model):
         verbose_name_plural = "Transações"
         ordering = ['-data']
 
+    def total(self):
+        out = defaultdict(int)
+        for item in self.itens.all():
+            out[item.moeda] += item.preco_unitario * item.qtde
+        return dict(out)
+        
     def __str__(self):
         fmt = "[{}] {} {} --> {}"
         return fmt.format(self.id, self.data,

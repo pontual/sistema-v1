@@ -32,4 +32,10 @@
 {% endfor %}
 
 
+Total:
+
+{% for moeda, valor in transacao.total.items %}
+{{ moeda }} {{ valor}} 
+{% endfor %}
+
 {% endblock %}
