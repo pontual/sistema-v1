@@ -1,1 +1,6 @@
 o Registros - ClientesVer: Organize data in a table 
+
+o Produtos - todos: place in a grid
+
+o Produtos - novo: generate thumbnail; currently loading full image and sizing it
+

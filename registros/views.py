@@ -2,14 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Produto, Empresa
-from .forms import ClienteForm
+from .models import Empresa, Produto
+from .forms import ClienteForm, ProdutoForm
 
 def index(request):
     return render(request, 'registros/index.html')
 
 
-# PRODUTO
+# PRODUTOS
 
 def produtos(request):
     produtos = Produto.objects.all().order_by('codigo')
@@ -19,7 +19,22 @@ def produtos(request):
 
 
 def produtosNovo(request):
-    return render(request, 'registros/index.html')
+    context = {}
+    
+    if request.method == "POST":
+        form = ProdutoForm(request.POST, request.FILES)
+        if form.is_valid():
+            produto_novo = form.save()
+            produto_id = produto_novo.id 
+            return HttpResponseRedirect(reverse('registros:produtosVer', kwargs={'produto_id': produto_id}))
+        else:
+            erro_descricao = form
+            return render(request, 'sitewide/erro.html',
+                          {'erro_descricao': erro_descricao})
+    else:
+        form = ProdutoForm()
+        context['form'] = form
+    return render(request, 'registros/produtos/novo.html', context)
 
 
 def produtosVer(request, produto_id):
@@ -55,6 +70,8 @@ def clientesNovo(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
+
+            """
             nome = form.cleaned_data['nome']
             rua = form.cleaned_data['rua']
             cidade = form.cleaned_data['cidade']
@@ -75,8 +92,10 @@ def clientesNovo(request):
                                cadastro_estadual=cadastro_estadual,
                                cadastro_municipal=cadastro_municipal,
                                vendedor=vendedor)
-            cli_novo.save()
-            cliente_id = cli_novo.id 
+            """
+            
+            cliente_novo = form.save()
+            cliente_id = cliente_novo.id 
             return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id}))
         else:
             erro_descricao = form
