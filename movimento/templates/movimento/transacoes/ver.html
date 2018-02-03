@@ -1,0 +1,34 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Transações - Movimento{% endblock %}
+{% block headerTitle %}Movimento - Transações{% endblock %}
+
+{% block mainTitle %}{{ transacao }}{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "movimento:transacoes" %}" class="btn btn-primary">Todas as Transações</a>
+
+{% endblock %}
+
+
+{% block main %}
+<br>
+
+<a href="{% url "movimento:transacoesEditar" transacao_id=transacao.id %}" class="btn btn-secondary">Editar</a>
+
+<a href="{% url "movimento:transacoesConfirmarApagar" transacao_id=transacao.id %}" class="btn btn-danger">Apagar</a>
+
+<br><br>
+
+<p>
+    {{ transacao }}
+</p>
+
+{% for item in itensDeLinha %}
+<p>
+    {{ item.qtde }} pçs {{ item.produto.codigo }} {{ item.moeda }} {{ item.preco_unitario }}
+</p>
+{% endfor %}
+
+
+{% endblock %}

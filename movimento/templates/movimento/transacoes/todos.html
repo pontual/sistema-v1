@@ -1,0 +1,29 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Transações - Movimento{% endblock %}
+{% block headerTitle %}Movimento - Transações{% endblock %}
+
+{% block mainTitle %}Transações{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "movimento:transacoesNovo" %}" class="btn btn-primary">Transação Nova</a>
+{% endblock %}
+
+
+{% block main %}
+
+{% for transacao in transacoes %}
+<div class="card">
+    <div class="card-body">
+        <a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}">
+            <h5 class="card-title">{{ transacao }}</h5>
+        </a>
+           
+        <p class="card-text">
+            LISTA DE ITENS
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,4 +1,12 @@
-{% extends 'sitewide/base.html' %}
+{% extends 'sitewide/bootstrap/base.html' %}
 
 {% block title %}Registros{% endblock %}
-{% block headerTitle %}Registros{% endblock %}
+
+{% block mainTitle %}Registros{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:clientes" %}" class="btn btn-primary">Clientes</a>
+
+<a href="{% url "registros:produtos" %}" class="btn btn-primary">Produtos</a>
+
+{% endblock %}

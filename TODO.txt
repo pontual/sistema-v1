@@ -4,3 +4,4 @@ o Produtos - todos: place in a grid
 
 o Produtos - novo: generate thumbnail; currently loading full image and sizing it
 
+o tags for Produtos, such as [lanterna] [chaveiro]

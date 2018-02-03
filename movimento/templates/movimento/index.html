@@ -1,4 +1,14 @@
-{% extends 'sitewide/base.html' %}
+{% extends 'sitewide/bootstrap/base.html' %}
 
 {% block title %}Movimento{% endblock %}
-{% block headerTitle %}Movimento{% endblock %}
+
+{% block mainTitle %}Movimento - Home{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "movimento:transacoes" %}" class="btn btn-primary">Transações</a>
+
+<a href="{% url "movimento:compras" %}" class="btn btn-primary">Compras</a>
+
+<a href="{% url "movimento:vendas" %}" class="btn btn-primary">Vendas</a>
+
+{% endblock %}

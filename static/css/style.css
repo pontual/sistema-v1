@@ -13,3 +13,22 @@ footer {
 .card-small {
     width: 18rem;
 }
+
+ul.ul-columns li {
+    float: left;
+    list-style: none;
+    padding-right: 0.8em;
+}
+
+ul.ul-columns input[type=text] {
+    width: 3em;
+}
+
+ul.ul-columns input[type=number] {
+    width: 3em;
+}
+
+.clear-both {
+    clear: both;
+}
+

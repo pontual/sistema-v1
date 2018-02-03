@@ -19,12 +19,12 @@ class Transacao(Model):
 
     def __str__(self):
         fmt = "[{}] {} {} --> {}"
-        return fmt.format(self.id, self.date_recorded,
+        return fmt.format(self.id, self.data,
                           self.vendedor, self.comprador)
 
 class ItemDeLinha(Model):
-    transacao = ForeignKey(Transacao, on_delete=CASCADE)
-    qtde = IntegerField(default=1)
+    transacao = ForeignKey(Transacao, related_name='itens', on_delete=CASCADE)
+    qtde = IntegerField(default=0)
     produto = ForeignKey(Produto, on_delete=SET_NULL, null=True)
     moeda = ForeignKey(Moeda, on_delete=SET_NULL, null=True)
     preco_unitario = IntegerField(default=0)

@@ -48,6 +48,9 @@ class Empresa(Model):
     # funcionario responsavel pelo cliente
     vendedor = ForeignKey('Funcionario', blank=True, null=True, on_delete=SET_NULL)
 
+    class Meta:
+        ordering = ['nome'] 
+
     def __str__(self):
         return self.nome
 
