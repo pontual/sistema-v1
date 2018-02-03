@@ -33,7 +33,7 @@ class Empresa(Model):
     cidade = CharField(max_length=63, blank=True)
     estado = CharField(max_length=63, blank=True)
     cep = CharField(max_length=15, blank=True)
-    pais = CharField(max_length=31, blank=True)
+    pais = CharField(max_length=31, blank=True, verbose_name="País")
 
     # Contato
     contato = CharField(max_length=63, blank=True) 
@@ -41,9 +41,9 @@ class Empresa(Model):
     email = EmailField(blank=True)
 
     # Cadastros 
-    cadastro_nacional = CharField(max_length=35, blank=True)
-    cadastro_estadual = CharField(max_length=35, blank=True)
-    cadastro_municipal = CharField(max_length=35, blank=True)
+    cadastro_nacional = CharField(max_length=35, blank=True, verbose_name="CNPJ")
+    cadastro_estadual = CharField(max_length=35, blank=True, verbose_name="Inscrição Estadual")
+    cadastro_municipal = CharField(max_length=35, blank=True, verbose_name="Inscrição Municipal")
 
     # funcionario responsavel pelo cliente
     vendedor = ForeignKey('Funcionario', blank=True, null=True, on_delete=SET_NULL)

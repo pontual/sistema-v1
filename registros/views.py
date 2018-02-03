@@ -22,8 +22,11 @@ def produtosNovo(request):
     return render(request, 'registros/index.html')
 
 
-def produtosVer(request):
-    return render(request, 'registros/index.html')
+def produtosVer(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+
+    context = {'produto': produto}
+    return render(request, 'registros/bootstrap/produtosVer.html', context)
 
 
 def produtosEditar(request, produto_id):

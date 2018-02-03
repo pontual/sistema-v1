@@ -1,0 +1,35 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+{% load static %}
+
+{% block title %}Produtos - Registros{% endblock %}
+{% block headerTitle %}Registros - Produtos{% endblock %}
+
+{% block mainTitle %}Produto - {{ produto.nome }}{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:produtos" %}" class="btn btn-primary">Todos os Produtos</a>
+
+{% endblock %}
+
+
+{% block main %}
+
+<a href="{% url "registros:produtosEditar" produto_id=produto.id %}" class="btn btn-secondary">Editar</a>
+
+<a href="{% url "registros:produtosConfirmarApagar" produto_id=produto.id %}" class="btn btn-danger">Apagar</a>
+
+<br><br>
+    
+<p>
+    <span class="font-weight-bold">{{ produto.codigo }}</span>
+    {{ produto.nome }}
+    ({{ produto.por_caixa }} peças por caixa)
+</p>
+
+<p>
+    <a href="{% if produto.foto %}{{ produto.foto.url }}{% else %}#{% endif %}">
+        <img src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}" class="foto-small">
+    </a>
+</p>
+
+{% endblock %}

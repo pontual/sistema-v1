@@ -1,4 +1,5 @@
 {% extends 'sitewide/bootstrap/base.html' %}
+{% load static %}
 
 {% block title %}Produtos - Registros{% endblock %}
 {% block headerTitle %}Registros - Produtos{% endblock %}
@@ -13,8 +14,11 @@
 {% block main %}
 
 {% for produto in produtos %}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{ produto.foto.url }}" alt="{{ produto.codigo }}">
+<div class="card card-small">
+    <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
+        <img class="card-img-top" src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}">
+    </a>
+    
     <div class="card-body">
         <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
             <h5 class="card-title">{{ produto.nome }} ({{ produto.id }})</h5>
