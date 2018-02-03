@@ -20,7 +20,7 @@ def produtos(request):
 
 def produtosNovo(request):
     context = {}
-    
+
     if request.method == "POST":
         form = ProdutoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -34,8 +34,9 @@ def produtosNovo(request):
     else:
         form = ProdutoForm()
         context['form'] = form
+    
     return render(request, 'registros/produtos/novo.html', context)
-
+    
 
 def produtosVer(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
@@ -45,15 +46,35 @@ def produtosVer(request, produto_id):
 
 
 def produtosEditar(request, produto_id):
-    return render(request, 'registros/index.html')
+    produto = get_object_or_404(Produto, pk=produto_id)
+
+    if request.method == "POST":
+        form = ProdutoForm(request.POST, request.FILES, instance=produto)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('registros:produtosVer', kwargs={'produto_id': produto_id}))
+        else:
+            erro_descricao = form
+            return render(request, 'sitewide/erro.html',
+                          {'erro_descricao': erro_descricao})
+    else:
+        form = ProdutoForm(instance=produto)
+        return render(request, 'registros/produtos/editar.html', {'form': form})
 
 
-def produtosConfirmarApagar(request):
-    return render(request, 'registros/index.html')
+def produtosConfirmarApagar(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+    context = {'produto': produto}
+    
+    return render(request, 'registros/produtos/confirmarApagar.html', context)
 
 
-def produtosApagar(request):
-    return render(request, 'registros/index.html')
+def produtosApagar(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+    produto.delete()
+    
+    return HttpResponseRedirect(reverse('registros:produtos'))
+
 
 # CLIENTES
 
@@ -70,30 +91,6 @@ def clientesNovo(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
         if form.is_valid():
-
-            """
-            nome = form.cleaned_data['nome']
-            rua = form.cleaned_data['rua']
-            cidade = form.cleaned_data['cidade']
-            estado = form.cleaned_data['estado']
-            cep = form.cleaned_data['cep']
-            pais = form.cleaned_data['pais']
-            telefone = form.cleaned_data['telefone']
-            email = form.cleaned_data['email']
-            cadastro_nacional = form.cleaned_data['cadastro_nacional']
-            cadastro_estadual = form.cleaned_data['cadastro_estadual']
-            cadastro_municipal = form.cleaned_data['cadastro_municipal']
-            vendedor = form.cleaned_data['vendedor']
-            
-            cli_novo = Empresa(nome=nome, rua=rua, cidade=cidade,
-                               estado=estado, cep=cep, pais=pais,
-                               telefone=telefone, email=email,
-                               cadastro_nacional=cadastro_nacional,
-                               cadastro_estadual=cadastro_estadual,
-                               cadastro_municipal=cadastro_municipal,
-                               vendedor=vendedor)
-            """
-            
             cliente_novo = form.save()
             cliente_id = cliente_novo.id 
             return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id}))

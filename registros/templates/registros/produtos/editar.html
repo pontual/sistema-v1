@@ -1,0 +1,23 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Produtos - Registros{% endblock %}
+{% block headerTitle %}Registros - Produtos{% endblock %}
+
+{% block mainTitle %}Editar Produto{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "registros:produtos" %}" class="btn btn-primary">Voltar</a>
+{% endblock %}
+
+{% block main %}
+
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" class="btn btn-success" value="Salvar">
+</form>
+
+{% endblock %}

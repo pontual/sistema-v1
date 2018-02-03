@@ -17,6 +17,13 @@
 
 <a href="{% url "registros:clientesConfirmarApagar" cliente_id=cliente.id %}" class="btn btn-danger">Apagar</a>
 
+<br><br>
+
+<p>
+    <b>Vendedor:</b>
+    {{ cliente.vendedor.user.username }}
+</p>
+
 <p>
     <b>Endereço:</b>
     {{ cliente.rua }},
