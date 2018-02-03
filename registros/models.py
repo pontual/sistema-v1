@@ -22,6 +22,9 @@ class Produto(Model):
     por_caixa = IntegerField(default=1)
     foto = ImageField(upload_to='products/', blank=True, null=True)
 
+    class Meta:
+        ordering = ['codigo'] 
+
     def __str__(self):
         return self.codigo
 

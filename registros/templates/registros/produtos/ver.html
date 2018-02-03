@@ -7,6 +7,7 @@
 {% block mainTitle %}Produto - {{ produto.nome }}{% endblock %}
 
 {% block actionTop %}
+<a href="{% url "registros:produtosNovo" %}" class="btn btn-primary">Produto Novo</a>
 <a href="{% url "registros:produtos" %}" class="btn btn-primary">Todos os Produtos</a>
 
 {% endblock %}

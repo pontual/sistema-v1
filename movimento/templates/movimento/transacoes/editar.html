@@ -20,10 +20,12 @@
         {{ form.as_table }}
     </table>
 
+    <br>
+    
     {{ formset.management_form }}
     {% for row in formset %}
     <ul class="ul-columns">
-        {{ row }}
+        {{ row.as_ul }}
     </ul>
     <div class="clear-both"></div>
     {% endfor %}

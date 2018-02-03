@@ -6,6 +6,7 @@
 {% block mainTitle %}Cliente - {{ cliente.nome }}{% endblock %}
 
 {% block actionTop %}
+<a href="{% url "registros:clientesNovo" %}" class="btn btn-primary">Cliente Novo</a>
 <a href="{% url "registros:clientes" %}" class="btn btn-primary">Todos os Clientes</a>
 
 {% endblock %}

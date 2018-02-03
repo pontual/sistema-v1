@@ -1,0 +1,24 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Transações - Movimento{% endblock %}
+{% block headerTitle %}Movimento - Transações{% endblock %}
+
+{% block mainTitle %}Realmente apagar {{ transacao }}?{% endblock %}
+
+{% block actionTop %}
+<a href="{% url "movimento:transacoes" %}" class="btn btn-primary">Todas as Transações</a>
+
+{% endblock %}
+
+
+{% block main %}
+
+<h3>
+
+<a href="{% url "movimento:transacoesApagar" transacao_id=transacao.id %}" class="btn btn-danger">Sim, apagar</a>
+
+<br><br><br>
+
+<a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}" class="btn btn-primary">Não, voltar</a>
+
+{% endblock %}

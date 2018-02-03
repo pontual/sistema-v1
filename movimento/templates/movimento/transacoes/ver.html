@@ -6,6 +6,7 @@
 {% block mainTitle %}{{ transacao }}{% endblock %}
 
 {% block actionTop %}
+<a href="{% url "movimento:transacoesNovo" %}" class="btn btn-primary">Transação Nova</a>
 <a href="{% url "movimento:transacoes" %}" class="btn btn-primary">Todas as Transações</a>
 
 {% endblock %}

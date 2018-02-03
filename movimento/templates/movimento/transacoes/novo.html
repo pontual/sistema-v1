@@ -13,9 +13,20 @@
 
 <form method="post">
     {% csrf_token %}
+
     <table>
         {{ form.as_table }}
     </table>
+
+    <br>
+
+    {{ formset.management_form }}
+    {% for row in formset %}
+        <ul class="ul-columns">
+        {{ row.as_ul }}
+    </ul>
+    <div class="clear-both"></div>
+    {% endfor %}
 
     <input type="submit" class="btn btn-success" value="Adicionar">
 </form>

@@ -15,7 +15,8 @@ class Transacao(Model):
     data = DateField(default=date.today)
 
     class Meta:
-        verbose_name_plural = "Transações"    
+        verbose_name_plural = "Transações"
+        ordering = ['-data']
 
     def __str__(self):
         fmt = "[{}] {} {} --> {}"

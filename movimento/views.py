@@ -1,17 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.forms import inlineformset_factory
 
 from .models import Transacao, ItemDeLinha
-from .forms import TransacaoForm
+from .forms import TransacaoForm, ItemDeLinhaFormSet
 
 def index(request):
     return render(request, 'movimento/index.html')
 
 
 def transacoes(request):
-    transacoes = Transacao.objects.all().order_by('-data')
+    transacoes = Transacao.objects.all().order_by('-data', '-id')
     
     context = {'transacoes': transacoes}
     return render(request, 'movimento/transacoes/todos.html', context)
@@ -24,15 +23,23 @@ def transacoesNovo(request):
         form = TransacaoForm(request.POST)
         if form.is_valid():
             transacao_nova = form.save()
-            transacao_id = transacao_nova.id
-            return HttpResponseRedirect(reverse('movimento:transacoesVer', kwargs={'transacao_id': transacao_id}))
+            formset = ItemDeLinhaFormSet(request.POST, instance=transacao_nova)
+        
+            if formset.is_valid():
+                formset.save()
+                transacao_id = transacao_nova.id
+                return HttpResponseRedirect(reverse('movimento:transacoesVer', kwargs={'transacao_id': transacao_id}))
+            else:
+                erro_descricao = formset
+                return render(request, 'sitewide/erro.html',
+                              {'erro_descricao': erro_descricao})
         else:
             erro_descricao = form
             return render(request, 'sitewide/erro.html',
                           {'erro_descricao': erro_descricao})
     else:
-        form = TransacaoForm()
-        context['form'] = form
+        context['form'] = TransacaoForm()
+        context['formset'] = ItemDeLinhaFormSet()
     return render(request, 'movimento/transacoes/novo.html', context)
     
 
@@ -48,8 +55,6 @@ def transacoesEditar(request, transacao_id):
     context = {}
     transacao = get_object_or_404(Transacao, pk=transacao_id)
     context['transacao'] = transacao
-    
-    ItemDeLinhaFormSet = inlineformset_factory(Transacao, ItemDeLinha, exclude=("transacao", ))
     
     if request.method == "POST":
         form = TransacaoForm(request.POST, instance=transacao)
@@ -68,12 +73,18 @@ def transacoesEditar(request, transacao_id):
     return render(request, 'movimento/transacoes/editar.html', context)
 
 
-def transacoesConfirmarApagar(request):
-    return render(request, 'movimento/index.html')
+def transacoesConfirmarApagar(request, transacao_id):
+    transacao = get_object_or_404(Transacao, pk=transacao_id)
+
+    context = {'transacao': transacao}
+    return render(request, 'movimento/transacoes/confirmarApagar.html', context)
 
 
-def transacoesApagar(request):
-    return render(request, 'movimento/index.html')
+def transacoesApagar(request, transacao_id):
+    transacao = get_object_or_404(Transacao, pk=transacao_id)
+    transacao.delete()
+    
+    return HttpResponseRedirect(reverse('movimento:transacoes'))
 
 
 def compras(request):

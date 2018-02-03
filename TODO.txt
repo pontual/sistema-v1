@@ -1,3 +1,4 @@
+
 o Registros - ClientesVer: Organize data in a table 
 
 o Produtos - todos: place in a grid
@@ -5,3 +6,7 @@ o Produtos - todos: place in a grid
 o Produtos - novo: generate thumbnail; currently loading full image and sizing it
 
 o tags for Produtos, such as [lanterna] [chaveiro]
+
+o Transacao Nova - JavaScript add more rows
+
+o Transacoes Todos - lista de itens
