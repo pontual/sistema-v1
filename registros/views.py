@@ -15,7 +15,7 @@ def produtos(request):
     produtos = Produto.objects.all().order_by('codigo')
 
     context = {'produtos': produtos}
-    return render(request, 'registros/bootstrap/produtos.html', context)
+    return render(request, 'registros/produtos/todos.html', context)
 
 
 def produtosNovo(request):
@@ -26,7 +26,7 @@ def produtosVer(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
 
     context = {'produto': produto}
-    return render(request, 'registros/bootstrap/produtosVer.html', context)
+    return render(request, 'registros/produtos/ver.html', context)
 
 
 def produtosEditar(request, produto_id):
@@ -40,13 +40,13 @@ def produtosConfirmarApagar(request):
 def produtosApagar(request):
     return render(request, 'registros/index.html')
 
-# CLIENTE
+# CLIENTES
 
 def clientes(request):
     clientes = Empresa.objects.all().order_by('nome')
     
     context = {'clientes': clientes}
-    return render(request, 'registros/bootstrap/clientes.html', context)
+    return render(request, 'registros/clientes/todos.html', context)
 
 
 def clientesNovo(request):
@@ -80,19 +80,19 @@ def clientesNovo(request):
             return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id}))
         else:
             erro_descricao = form
-            return render(request, 'sitewide/bootstrap/erro.html',
+            return render(request, 'sitewide/erro.html',
                           {'erro_descricao': erro_descricao})
     else:
         form = ClienteForm()
         context['form'] = form
-    return render(request, 'registros/bootstrap/clientesNovo.html', context)
+    return render(request, 'registros/clientes/novo.html', context)
 
 
 def clientesVer(request, cliente_id):
     cliente = get_object_or_404(Empresa, pk=cliente_id)
     
     context = {'cliente': cliente}
-    return render(request, 'registros/bootstrap/clientesVer.html', context)
+    return render(request, 'registros/clientes/ver.html', context)
 
 
 def clientesEditar(request, cliente_id):
@@ -102,14 +102,14 @@ def clientesEditar(request, cliente_id):
     if form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse('registros:clientesVer', kwargs={'cliente_id': cliente_id}))
-    return render(request, 'registros/bootstrap/clientesEditar.html', {'form': form})
+    return render(request, 'registros/clientes/editar.html', {'form': form})
 
 
 def clientesConfirmarApagar(request, cliente_id):
     cliente = get_object_or_404(Empresa, pk=cliente_id)
 
     context = {'cliente': cliente}
-    return render(request, 'registros/bootstrap/clientesConfirmarApagar.html', context)
+    return render(request, 'registros/clientes/confirmarApagar.html', context)
 
 def clientesApagar(request, cliente_id):
     cliente = get_object_or_404(Empresa, pk=cliente_id)
