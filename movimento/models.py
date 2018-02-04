@@ -7,13 +7,11 @@ from django.db.models import CharField, IntegerField, DateField
 from django.db.models import ForeignKey, CASCADE, SET_NULL
 from django.contrib.auth.models import User
 
-from registros.models import Moeda, Produto, Empresa
-
 class Transacao(Model):
-    vendedor = ForeignKey(Empresa, related_name="empresa_vendedora", on_delete=SET_NULL, null=True)
-    comprador = ForeignKey(Empresa, related_name="empresa_compradora", on_delete=SET_NULL, null=True)
+    vendedor = ForeignKey('registros.Empresa', related_name="empresa_vendedora", on_delete=SET_NULL, null=True)
+    comprador = ForeignKey('registros.Empresa', related_name="empresa_compradora", on_delete=SET_NULL, null=True)
     data = DateField(default=date.today)
-    moeda = ForeignKey(Moeda, on_delete=SET_NULL, null=True)
+    moeda = ForeignKey('registros.Moeda', on_delete=SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "Transações"
@@ -34,7 +32,7 @@ class Transacao(Model):
 class ItemDeLinha(Model):
     transacao = ForeignKey(Transacao, related_name='itens', on_delete=CASCADE)
     qtde = IntegerField(default=0)
-    produto = ForeignKey(Produto, on_delete=SET_NULL, null=True)
+    produto = ForeignKey('registros.Produto', on_delete=SET_NULL, null=True)
     preco_unitario = IntegerField(default=0)
 
     class Meta:

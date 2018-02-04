@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Empresa, Produto
+from movimento.models import ItemDeLinha
+
+from .models import Empresa, Produto, Configuracao
 from .forms import ClienteForm, ProdutoForm
 
 def index(request):
@@ -40,7 +42,6 @@ def produtosNovo(request):
 
 def produtosVer(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
-
     context = {'produto': produto}
     return render(request, 'registros/produtos/ver.html', context)
 

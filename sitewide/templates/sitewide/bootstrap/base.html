@@ -37,12 +37,11 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Movimento
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">                            
                             <a class="dropdown-item" href="{% url "movimento:transacoes" %}">Transações</a>
-                            <!-- 
-                            <a class="dropdown-item" href="{% url "movimento:compras" %}">Compras</a>
-                            <a class="dropdown-item" href="{% url "movimento:vendas" %}">Vendas</a>
-                            -->
+                            <a class="dropdown-item" href="{% url "movimento:transacoesCompra" %}">Compras</a>
+                            <a class="dropdown-item" href="{% url "movimento:transacoesVenda" %}">Vendas</a>
+
                         </div>
                     </li>
                     <li class="nav-item">

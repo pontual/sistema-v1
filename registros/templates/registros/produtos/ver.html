@@ -28,6 +28,10 @@
 </p>
 
 <p>
+    Estoque: {{ produto.estoque }} peças
+</p>
+
+<p>
     <a href="{% if produto.foto %}{{ produto.foto.url }}{% else %}#{% endif %}">
         <img src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}" class="foto-small">
     </a>

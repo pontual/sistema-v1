@@ -16,7 +16,7 @@ def transacoes(request):
     return render(request, 'movimento/transacoes/todos.html', context)
 
 
-def transacoesNovo(request):
+def transacoesNovo(request, tipo="padrao"):
     context = {}
 
     if request.method == "POST":
@@ -38,10 +38,27 @@ def transacoesNovo(request):
             return render(request, 'sitewide/erro.html',
                           {'erro_descricao': erro_descricao})
     else:
-        context['form'] = TransacaoForm()
+        if tipo == "venda":
+            context['form'] = TransacaoForm(initial={'vendedor': 1})
+            context['label'] = "Venda"
+        elif tipo == "compra":
+            context['form'] = TransacaoForm(initial={'comprador': 1})
+            context['label'] = "Compra"
+        else:
+            # padrao
+            context['form'] = TransacaoForm()
+            context['label'] = "Transação"
+                        
         context['formset'] = ItemDeLinhaFormSet()
     return render(request, 'movimento/transacoes/novo.html', context)
     
+def transacoesCompra(request):
+    return transacoesNovo(request, "compra")
+
+
+def transacoesVenda(request):
+    return transacoesNovo(request, "venda")
+
 
 def transacoesVer(request, transacao_id):
     transacao = get_object_or_404(Transacao, pk=transacao_id)
@@ -86,12 +103,3 @@ def transacoesApagar(request, transacao_id):
     
     return HttpResponseRedirect(reverse('movimento:transacoes'))
 
-
-def compras(request):
-    context = {'location': 'compras'}
-    return render(request, 'movimento/compras.html', context)
-
-
-def vendas(request):
-    context = {'location': 'vendas'}
-    return render(request, 'movimento/vendas.html', context) 

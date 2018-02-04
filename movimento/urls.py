@@ -13,7 +13,7 @@ urlpatterns = [
     path('transacoes/confirmar_apagar/<int:transacao_id>/', views.transacoesConfirmarApagar, name='transacoesConfirmarApagar'),
     path('transacoes/apagar/<int:transacao_id>/', views.transacoesApagar, name='transacoesApagar'),
     
-    path('compras/', views.compras, name='compras'),
+    path('compras/', views.transacoesCompra, name='transacoesCompra'),
 
-    path('vendas/', views.vendas, name='vendas'),
+    path('vendas/', views.transacoesVenda, name='transacoesVenda'),
 ]

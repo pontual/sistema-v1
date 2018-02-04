@@ -8,6 +8,8 @@ from django.db.models import CharField, IntegerField, BooleanField
 from django.db.models import ForeignKey, CASCADE, SET_NULL
 from django.contrib.auth.models import User
 
+from movimento.models import ItemDeLinha
+
 class Moeda(Model):
     nome = CharField(max_length=63)
     codigo = CharField(max_length=6, verbose_name="Código")
@@ -16,18 +18,7 @@ class Moeda(Model):
     def __str__(self):
         return self.codigo
 
-class Produto(Model):
-    codigo = CharField(max_length=63, verbose_name="Código")
-    nome = CharField(max_length=127)
-    por_caixa = IntegerField(default=1)
-    foto = ImageField(upload_to='products/', blank=True, null=True)
-
-    class Meta:
-        ordering = ['codigo'] 
-
-    def __str__(self):
-        return self.codigo
-
+    
 class Empresa(Model):
     nome = CharField(max_length=255)
 
@@ -57,7 +48,7 @@ class Empresa(Model):
     def compras(self):
         transacoes = self.empresa_compradora.all()
         return transacoes
-        
+
     def __str__(self):
         return self.nome
 
@@ -79,3 +70,30 @@ class Configuracao(Model):
         
     def __str__(self):
         return self.empresa_ativa.nome
+
+
+class Produto(Model):
+    codigo = CharField(max_length=63, verbose_name="Código")
+    nome = CharField(max_length=127)
+    por_caixa = IntegerField(default=1)
+    foto = ImageField(upload_to='products/', blank=True, null=True)
+
+    class Meta:
+        ordering = ['codigo'] 
+
+    def estoque(self):
+        empresa_ativa = Configuracao.objects.get().empresa_ativa
+        compras = ItemDeLinha.objects.filter(transacao__comprador=empresa_ativa, produto=self)
+        vendas = ItemDeLinha.objects.filter(transacao__vendedor=empresa_ativa, produto=self)
+        estoque = 0
+
+        for compra in compras:
+            estoque += compra.qtde
+
+        for venda in vendas:
+            estoque -= venda.qtde
+
+        return estoque
+        
+    def __str__(self):
+        return self.codigo
