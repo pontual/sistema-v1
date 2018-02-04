@@ -14,6 +14,10 @@ footer {
     width: 18rem;
 }
 
+.card-fixed-height-small {
+    height: 12em;
+}
+
 ul.ul-columns {
     margin-left: 0;
     padding-left: 0;

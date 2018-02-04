@@ -1,15 +1,12 @@
 To-do
 -----
 
-o busca - multiple search, cliente, then produto codigo, then produto nome
 
 
 Wishlist
 --------
 
 o Produtos - novo: generate thumbnail; currently loading full image and setting width
-
-o tags for Produtos, such as [lanterna] [chaveiro]
 
 o Transacao Nova - JavaScript add more rows
 
@@ -18,3 +15,13 @@ o paginate clientes
 o paginate produtos
 
 o Cliente address - show on Google maps
+
+
+Setup
+-----
+
+o Resize a bunch of fotos to 640x480 using a script and pillow
+
+o Bulk add produtos, about 30
+
+o Bulk add clientes, about 30

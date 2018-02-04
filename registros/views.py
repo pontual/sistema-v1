@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models.functions import Lower
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -81,7 +82,7 @@ def produtosApagar(request, produto_id):
 # CLIENTES
 
 def clientes(request):
-    clientes = Empresa.objects.all().order_by('nome')
+    clientes = Empresa.objects.all().order_by(Lower('nome'))
     
     context = {'clientes': clientes}
     return render(request, 'registros/clientes/todos.html', context)

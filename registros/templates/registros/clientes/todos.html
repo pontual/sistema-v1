@@ -13,7 +13,7 @@
 {% block main %}
 
 {% for cliente in clientes %}
-<div class="card card-small float-left">
+<div class="card card-small card-fixed-height-small float-left">
     <div class="card-body">
         <a href="{% url "registros:clientesVer" cliente_id=cliente.id %}">
             <h5 class="card-title">{{ cliente.nome }} ({{ cliente.id }})</h5>
@@ -21,7 +21,7 @@
            
         <p class="card-text">
             {{ cliente.rua }}<br>
-            {{ cliente.cidade }}
+            {{ cliente.cidade }}, {{ cliente.estado }}
         </p>
     </div>
 </div>

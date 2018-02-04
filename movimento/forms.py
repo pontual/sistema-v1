@@ -11,4 +11,4 @@ class TransacaoForm(ModelForm):
         model = Transacao
         fields = '__all__'
 
-ItemDeLinhaFormSet = inlineformset_factory(Transacao, ItemDeLinha, exclude=("transacao", ))
+ItemDeLinhaFormSet = inlineformset_factory(Transacao, ItemDeLinha, exclude=("transacao", ), extra=5)
