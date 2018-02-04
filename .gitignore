@@ -17,6 +17,7 @@ db.sqlite3
 runserver
 makemigrations
 migrate
+test
 
 # settings.py may have different DBs, for example
 /sistema/settings.py
