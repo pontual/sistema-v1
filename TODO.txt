@@ -1,9 +1,19 @@
+Todo
+----
 
 o Registros - ClientesVer: Organize data in a table 
 
 o Produtos - todos: place in a grid
 
-o Produtos - novo: generate thumbnail; currently loading full image and sizing it
+o clientes - grand total summary by moeda
+
+o busca - multiple search, cliente, then produto codigo, then produto nome
+
+
+Wishlist
+--------
+
+o Produtos - novo: generate thumbnail; currently loading full image and setting width
 
 o tags for Produtos, such as [lanterna] [chaveiro]
 
@@ -12,7 +22,3 @@ o Transacao Nova - JavaScript add more rows
 o paginate clientes
 
 o paginate produtos
-
-o clientes - grand total summary by moeda
-
-o busca
