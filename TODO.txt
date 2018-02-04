@@ -1,8 +1,6 @@
 To-do
 -----
 
-o clientes - grand total summary by moeda
-
 o busca - multiple search, cliente, then produto codigo, then produto nome
 
 

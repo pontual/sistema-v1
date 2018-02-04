@@ -31,9 +31,9 @@ class Transacao(Model):
 
 class ItemDeLinha(Model):
     transacao = ForeignKey(Transacao, related_name='itens', on_delete=CASCADE)
-    qtde = IntegerField(default=0)
+    qtde = IntegerField(blank=True, null=True)
     produto = ForeignKey('registros.Produto', on_delete=SET_NULL, null=True)
-    preco_unitario = IntegerField(default=0)
+    preco_unitario = IntegerField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Itens de Linha"

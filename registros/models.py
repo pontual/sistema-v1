@@ -1,4 +1,5 @@
 from datetime import date
+from collections import defaultdict
 
 from django.db import models
 
@@ -46,9 +47,17 @@ class Empresa(Model):
         ordering = ['nome'] 
 
     def compras(self):
-        transacoes = self.empresa_compradora.all()
+        transacoes = self.empresa_compradora.all().order_by('-data', '-id')
         return transacoes
 
+    def totais(self):
+        transacoes = self.empresa_compradora.all().order_by('-data', '-id')
+        out = defaultdict(int)
+
+        for transacao in transacoes:
+            out[transacao.moeda] += transacao.total()
+        return dict(out)
+            
     def __str__(self):
         return self.nome
 
@@ -96,11 +105,11 @@ class Produto(Model):
 
     def compras(self):
         empresa_ativa = Configuracao.objects.get().empresa_ativa
-        return ItemDeLinha.objects.filter(transacao__comprador=empresa_ativa, produto=self)
+        return ItemDeLinha.objects.filter(transacao__comprador=empresa_ativa, produto=self).order_by('-id')
 
     def vendas(self):
         empresa_ativa = Configuracao.objects.get().empresa_ativa
-        return ItemDeLinha.objects.filter(transacao__vendedor=empresa_ativa, produto=self)
+        return ItemDeLinha.objects.filter(transacao__vendedor=empresa_ativa, produto=self).order_by('-id')
         
     
     def __str__(self):
