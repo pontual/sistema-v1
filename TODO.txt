@@ -9,4 +9,10 @@ o tags for Produtos, such as [lanterna] [chaveiro]
 
 o Transacao Nova - JavaScript add more rows
 
-o Transacoes Todos - lista de itens
+o Transacoes Todos - total do pedido
+
+o paginate clientes
+
+o paginate produtos
+
+o clientes - grand total summary by moeda

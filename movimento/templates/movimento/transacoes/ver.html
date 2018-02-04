@@ -3,7 +3,12 @@
 {% block title %}Transações - Movimento{% endblock %}
 {% block headerTitle %}Movimento - Transações{% endblock %}
 
-{% block mainTitle %}{{ transacao }}{% endblock %}
+{% block mainTitle %}
+[{{ transacao.id }}] {{ transacao.data }}
+<a href="{% url "registros:clientesVer" transacao.comprador.id %}">
+    {{ transacao.comprador }}
+</a>
+{% endblock %}
 
 {% block actionTop %}
 <a href="{% url "movimento:transacoesNovo" %}" class="btn btn-primary">Transação Nova</a>
@@ -27,15 +32,11 @@
 
 {% for item in itensDeLinha %}
 <p>
-    {{ item.qtde }} pçs {{ item.produto.codigo }} {{ item.moeda }} {{ item.preco_unitario }}
+    {{ item.qtde }} pçs {{ item.produto.codigo }} {{ item.moeda }} {{ item.preco_unitario }} = {{ item.total }}
 </p>
 {% endfor %}
 
 
-Total:
-
-{% for moeda, valor in transacao.total.items %}
-{{ moeda }} {{ valor}} 
-{% endfor %}
+Total: {{ transacao.total }}
 
 {% endblock %}

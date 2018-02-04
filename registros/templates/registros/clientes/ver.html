@@ -49,4 +49,15 @@
     I.M. {{ cliente.cadastro_municipal }}
 </p>
 
+<p>
+    <b>Compras</b>
+    {% for compra in compras %}
+    <p>
+        <a href="{% url "movimento:transacoesVer" compra.id %}">
+            {{ compra }}
+        </a>
+    </p>
+    {% endfor %}
+</p>
+
 {% endblock %}
