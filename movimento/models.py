@@ -42,6 +42,9 @@ class ItemDeLinha(Model):
         return self.qtde * self.preco_unitario
     
     def __str__(self):
-        fmt = "[{}] {} pc {} @ {}"
-        return fmt.format(self.transacao.id, self.qtde,
-                          self.produto, self.preco_unitario)
+        fmt = "[{}] {} --> {}: {} pc {} @ {} {} = {}"
+        return fmt.format(self.transacao.data,
+                          self.transacao.vendedor, self.transacao.comprador,
+                          self.qtde, self.produto,
+                          self.transacao.moeda, self.preco_unitario,
+                          self.total())

@@ -4,7 +4,13 @@
 {% block title %}Produtos - Registros{% endblock %}
 {% block headerTitle %}Registros - Produtos{% endblock %}
 
-{% block mainTitle %}Produto - {{ produto.nome }}{% endblock %}
+{% block mainTitle %}
+{{ produto.codigo }}
+
+<a href="{% url "registros:produtosEditar" produto_id=produto.id %}" class="btn btn-secondary">Editar</a>
+
+<a href="{% url "registros:produtosConfirmarApagar" produto_id=produto.id %}" class="btn btn-danger">Apagar</a>
+{% endblock %}
 
 {% block actionTop %}
 <a href="{% url "registros:produtosNovo" %}" class="btn btn-primary">Produto Novo</a>
@@ -15,26 +21,59 @@
 
 {% block main %}
 
-<a href="{% url "registros:produtosEditar" produto_id=produto.id %}" class="btn btn-secondary">Editar</a>
 
-<a href="{% url "registros:produtosConfirmarApagar" produto_id=produto.id %}" class="btn btn-danger">Apagar</a>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="ficha-tab" data-toggle="tab" href="#ficha" role="tab" aria-controls="ficha" aria-selected="true">Ficha</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="compras-tab" data-toggle="tab" href="#compras" role="tab" aria-controls="compras" aria-selected="false">Compras</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="vendas-tab" data-toggle="tab" href="#vendas" role="tab" aria-controls="vendas" aria-selected="false">Vendas</a>
+    </li>
+</ul>
 
-<br><br>
-    
-<p>
-    <span class="font-weight-bold">{{ produto.codigo }}</span>
-    {{ produto.nome }}
-    ({{ produto.por_caixa }} peças por caixa)
-</p>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="ficha" role="tabpanel" aria-labelledby="ficha-tab">
 
-<p>
-    Estoque: {{ produto.estoque }} peças
-</p>
+        <p>
+            {{ produto.nome }}, {{ produto.por_caixa }} peças por caixa
+        </p>
 
-<p>
-    <a href="{% if produto.foto %}{{ produto.foto.url }}{% else %}#{% endif %}">
-        <img src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}" class="foto-small">
-    </a>
-</p>
+        <p>
+            <b>Estoque</b>: {{ produto.estoque }} peças
+        </p>
+
+        <p>
+            <a href="{% if produto.foto %}{{ produto.foto.url }}{% else %}#{% endif %}">
+                <img src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}" class="foto-small">
+            </a>
+        </p>
+
+    </div>
+    <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
+        <p>
+            {% for compra in produto.compras %}
+            <p>
+                <a href="{% url "movimento:transacoesVer" compra.transacao.id %}">
+                    {{ compra }}
+                </a>
+            </p>
+            {% endfor %}
+        </p>
+    </div>
+    <div class="tab-pane fade" id="vendas" role="tabpanel" aria-labelledby="vendas-tab">
+        <p>
+            {% for venda in produto.vendas %}
+            <p>
+                <a href="{% url "movimento:transacoesVer" venda.transacao.id %}">
+                    {{ venda }}
+                </a>
+            </p>
+            {% endfor %}
+        </p>
+    </div>
+</div>
 
 {% endblock %}

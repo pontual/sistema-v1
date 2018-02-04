@@ -42,6 +42,7 @@ def produtosNovo(request):
 
 def produtosVer(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
+
     context = {'produto': produto}
     return render(request, 'registros/produtos/ver.html', context)
 

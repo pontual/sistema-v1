@@ -3,7 +3,13 @@
 {% block title %}Clientes - Registros{% endblock %}
 {% block headerTitle %}Registros - Clientes{% endblock %}
 
-{% block mainTitle %}Cliente - {{ cliente.nome }}{% endblock %}
+{% block mainTitle %}
+{{ cliente.nome }}
+
+<a href="{% url "registros:clientesEditar" cliente_id=cliente.id %}" class="btn btn-secondary">Editar</a>
+
+<a href="{% url "registros:clientesConfirmarApagar" cliente_id=cliente.id %}" class="btn btn-danger">Apagar</a>
+{% endblock %}
 
 {% block actionTop %}
 <a href="{% url "registros:clientesNovo" %}" class="btn btn-primary">Cliente Novo</a>
@@ -14,50 +20,54 @@
 
 {% block main %}
 
-<a href="{% url "registros:clientesEditar" cliente_id=cliente.id %}" class="btn btn-secondary">Editar</a>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="ficha-tab" data-toggle="tab" href="#ficha" role="tab" aria-controls="ficha" aria-selected="true">Ficha</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="compras-tab" data-toggle="tab" href="#compras" role="tab" aria-controls="compras" aria-selected="false">Compras</a>
+    </li>
+</ul>
 
-<a href="{% url "registros:clientesConfirmarApagar" cliente_id=cliente.id %}" class="btn btn-danger">Apagar</a>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="ficha" role="tabpanel" aria-labelledby="ficha-tab">
+        <p>
+            <b>Vendedor:</b>
+            {{ cliente.vendedor.user.username }}
+        </p>
 
-<br><br>
+        <p>
+            {{ cliente.rua }}, {{ cliente.cidade }}, {{ cliente.estado }}
+            <br>
+            CEP {{ cliente.cep }}
+        </p>
 
-<p>
-    <b>Vendedor:</b>
-    {{ cliente.vendedor.user.username }}
-</p>
+        <p>
+            <b>Contato:</b>
+            {{ cliente.contato }}<br>
+            {{ cliente.telefone }}<br>
+            {{ cliente.email }}
+        </p>
 
-<p>
-    <b>Endereço:</b>
-    {{ cliente.rua }},
-    {{ cliente.cidade }},
-    {{ cliente.estado }},
-    {{ cliente.pais }},
-    CEP {{ cliente.cep }}
-</p>
-
-<p>
-    <b>Contato:</b>
-    {{ cliente.contato }}<br>
-    {{ cliente.telefone }}<br>
-    {{ cliente.email }}
-</p>
-
-<p>
-    <b>Cadastros:</b>
-    <br>
-    CNPJ {{ cliente.cadastro_nacional }}<br>
-    I.E. {{ cliente.cadastro_estadual }}<br>
-    I.M. {{ cliente.cadastro_municipal }}
-</p>
-
-<p>
-    <b>Compras</b>
-    {% for compra in compras %}
-    <p>
-        <a href="{% url "movimento:transacoesVer" compra.id %}">
-            {{ compra }}
-        </a>
-    </p>
-    {% endfor %}
-</p>
+        <p>
+            <b>Cadastros:</b>
+            <br>
+            CNPJ: {{ cliente.cadastro_nacional }}<br>
+            I.E.: {{ cliente.cadastro_estadual }}<br>
+            I.M.: {{ cliente.cadastro_municipal }}
+        </p>
+    </div>
+    <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
+        <p>
+            {% for compra in compras %}
+            <p>
+                <a href="{% url "movimento:transacoesVer" compra.id %}">
+                    {{ compra }}
+                </a>
+            </p>
+            {% endfor %}
+        </p>
+    </div>
+</div>
 
 {% endblock %}

@@ -26,7 +26,7 @@ class Empresa(Model):
     rua = CharField(max_length=255, blank=True)
     cidade = CharField(max_length=63, blank=True)
     estado = CharField(max_length=63, blank=True)
-    cep = CharField(max_length=15, blank=True)
+    cep = CharField(max_length=15, blank=True, verbose_name="CEP")
     pais = CharField(max_length=31, blank=True, verbose_name="País")
 
     # Contato
@@ -82,9 +82,8 @@ class Produto(Model):
         ordering = ['codigo'] 
 
     def estoque(self):
-        empresa_ativa = Configuracao.objects.get().empresa_ativa
-        compras = ItemDeLinha.objects.filter(transacao__comprador=empresa_ativa, produto=self)
-        vendas = ItemDeLinha.objects.filter(transacao__vendedor=empresa_ativa, produto=self)
+        compras = self.compras()
+        vendas = self.vendas()
         estoque = 0
 
         for compra in compras:
@@ -94,6 +93,15 @@ class Produto(Model):
             estoque -= venda.qtde
 
         return estoque
+
+    def compras(self):
+        empresa_ativa = Configuracao.objects.get().empresa_ativa
+        return ItemDeLinha.objects.filter(transacao__comprador=empresa_ativa, produto=self)
+
+    def vendas(self):
+        empresa_ativa = Configuracao.objects.get().empresa_ativa
+        return ItemDeLinha.objects.filter(transacao__vendedor=empresa_ativa, produto=self)
         
+    
     def __str__(self):
         return self.codigo

@@ -14,23 +14,23 @@
 {% block main %}
 
 {% for produto in produtos %}
-<div class="card card-small">
+<div class="card card-small float-left">
     <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
         <img class="card-img-top" src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}">
     </a>
     
     <div class="card-body">
         <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
-            <h5 class="card-title">{{ produto.nome }} ({{ produto.id }})</h5>
+            <h5 class="card-title">{{ produto.codigo }}</h5>
         </a>
            
-        <p class="card-text">
-            
-            {{ produto.codigo }}
+        <p class="card-text">            
             {{ produto.nome }}
         </p>
     </div>
 </div>
 {% endfor %}
+
+<div class="clear-both"></div>
 
 {% endblock %}
