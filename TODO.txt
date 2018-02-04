@@ -1,9 +1,9 @@
-Todo
-----
+To-do
+-----
 
 o Registros - ClientesVer: Organize data in a table 
 
-o Produtos - todos: place in a grid
+o Produtos (all): place in a grid
 
 o clientes - grand total summary by moeda
 
