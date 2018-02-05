@@ -12,18 +12,16 @@
 
 {% block main %}
 
-{% for transacao in transacoes %}
-<div class="card">
-    <div class="card-body">
-        <a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}">
-            <h5 class="card-title">{{ transacao }}</h5>
-        </a>
-           
-        <p class="card-text">
-            LISTA DE ITENS
-        </p>
-    </div>
-</div>
-{% endfor %}
+<table class="table-sm table-bordered">
+    {% for transacao in transacoes %}
+    <tr>
+        <td>
+            <a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}">
+                {{ transacao }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

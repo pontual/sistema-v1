@@ -20,7 +20,10 @@ class Transacao(Model):
     def total(self):
         out = 0
         for item in self.itens.all():
-            out += item.preco_unitario * item.qtde
+            try:
+                out += item.preco_unitario * item.qtde
+            except TypeError:
+                out += 0
         return out
         
     def __str__(self):
@@ -39,7 +42,10 @@ class ItemDeLinha(Model):
         verbose_name_plural = "Itens de Linha"
 
     def total(self):
-        return self.qtde * self.preco_unitario
+        try:
+            return self.qtde * self.preco_unitario
+        except TypeError:
+            return 0
     
     def __str__(self):
         fmt = "[{}] {} --> {}: {} pc {} @ {} {} = {}"
