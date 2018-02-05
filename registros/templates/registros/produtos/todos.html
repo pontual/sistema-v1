@@ -14,7 +14,7 @@
 {% block main %}
 
 {% for produto in produtos %}
-<div class="card card-small float-left">
+<div class="card card-small inline-block">
     <a href="{% url "registros:produtosVer" produto_id=produto.id %}">
         <img class="card-img-top" src="{% if produto.foto %}{{ produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}" alt="{{ produto.codigo }}">
     </a>

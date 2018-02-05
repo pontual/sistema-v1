@@ -51,20 +51,26 @@
 
         <p>
             <b>Cadastros:</b>
-            <br>
-            CNPJ: {{ cliente.cadastro_nacional }}<br>
-            I.E.: {{ cliente.cadastro_estadual }}<br>
-            I.M.: {{ cliente.cadastro_municipal }}
+            <table class="table-sm">
+                <tr>
+                    <td>CNPJ</td>
+                    <td>{{ cliente.cadastro_nacional }}</td>
+                </tr>
+                <tr>
+                    <td>I.E.</td>
+                    <td>{{ cliente.cadastro_estadual }}</td>
+                </tr>
+            </table>
         </p>
     </div>
     <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
         Totais de compras:
-        <table class="table-sm table-bordered">
+        <table class="table-sm">
             <tbody>
-                {% for moeda, valor in totais.items %}
+                {% for row in totais %}
                 <tr>
-                    <td>{{ moeda }}</td>
-                    <td>{{ valor }}</td>
+                    <td>{{ row.codigo }}</td>
+                    <td class="td-align-right">{{ row.valor }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -14,8 +14,16 @@ footer {
     width: 18rem;
 }
 
+.card-med {
+    width: 27rem;
+}
+
 .card-fixed-height-small {
     height: 12em;
+}
+
+.card-fixed-height-med {
+    height: 22em;
 }
 
 ul.ul-columns {
@@ -46,3 +54,12 @@ ul.ul-columns input[type=number] {
     clear: both;
 }
 
+.inline-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.td-align-right {
+    text-align: right;
+}
+                    

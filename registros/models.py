@@ -16,6 +16,9 @@ class Moeda(Model):
     codigo = CharField(max_length=6, verbose_name="Código")
     mostrar_centavos = BooleanField(default=True)
 
+    class Meta:
+        ordering = ['codigo']
+        
     def __str__(self):
         return self.codigo
 
@@ -53,11 +56,17 @@ class Empresa(Model):
 
     def totais(self):
         transacoes = self.empresa_compradora.all().order_by('-data', '-id')
-        out = defaultdict(int)
+        totais_dict = defaultdict(int)
 
         for transacao in transacoes:
-            out[transacao.moeda] += transacao.total()
-        return dict(out)
+            totais_dict[transacao.moeda.codigo] += transacao.total()
+
+        out = []
+        
+        for codigo in sorted(dict(totais_dict)):
+            out.append({'codigo': codigo, 'valor': totais_dict[codigo]})
+
+        return out
             
     def __str__(self):
         return self.nome
