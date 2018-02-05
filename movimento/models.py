@@ -20,10 +20,7 @@ class Transacao(Model):
     def total(self):
         out = 0
         for item in self.itens.all():
-            try:
-                out += item.preco_unitario * item.qtde
-            except TypeError:
-                out += 0
+            out += item.total()
         return out
         
     def __str__(self):
