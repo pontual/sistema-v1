@@ -24,4 +24,15 @@ o Resize a bunch of fotos to 640x480 using a script and pillow
 
 o Bulk add produtos, about 30
 
+python manage.py shell
+
+> import os
+> from django.core.files import File
+> from registros.models import Produto
+>
+> os.chdir("C:/users/heitor/sisfotos/")
+> Produto.objects.create(codigo="143303", nome="Power Bank 10400 mAh", por_caixa=100, foto=File(open("143303.jpg", 'rb'))).save()
+
+See setup/produtos
+
 o Bulk add clientes, about 30
