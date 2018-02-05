@@ -23,3 +23,6 @@ test
 /sistema/settings.py
 /sistema/mysql.cnf
 
+# clientes
+/setup/clientes.*
+/setup/cliente.*

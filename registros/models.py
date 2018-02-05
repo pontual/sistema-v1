@@ -25,6 +25,7 @@ class Empresa(Model):
 
     # Endereço
     rua = CharField(max_length=255, blank=True)
+    bairro = CharField(max_length=63, blank=True)
     cidade = CharField(max_length=63, blank=True)
     estado = CharField(max_length=63, blank=True)
     cep = CharField(max_length=15, blank=True, verbose_name="CEP")
