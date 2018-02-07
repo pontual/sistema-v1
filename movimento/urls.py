@@ -16,4 +16,5 @@ urlpatterns = [
     path('compras/', views.transacoesCompra, name='transacoesCompra'),
 
     path('vendas/', views.transacoesVenda, name='transacoesVenda'),
+    path('vendaCliente/<int:cliente_id>/', views.transacoesVendaCliente, name='transacoesVendaCliente'),
 ]

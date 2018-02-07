@@ -109,10 +109,10 @@ def clientesNovo(request):
 
 def clientesVer(request, cliente_id):
     cliente = get_object_or_404(Empresa, pk=cliente_id)
-    compras = cliente.compras()
+    vendas = cliente.vendas()
     totais = cliente.totais()
     
-    context = {'cliente': cliente, 'compras': compras, 'totais': totais}
+    context = {'cliente': cliente, 'vendas': vendas, 'totais': totais}
     return render(request, 'registros/clientes/ver.html', context)
 
 

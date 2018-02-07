@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from registros.models import Empresa, Configuracao
+
 from .models import Transacao, ItemDeLinha
 from .forms import TransacaoForm, ItemDeLinhaFormSet
 
@@ -16,7 +18,7 @@ def transacoes(request):
     return render(request, 'movimento/transacoes/todos.html', context)
 
 
-def transacoesNovo(request, tipo="padrao"):
+def transacoesNovo(request, tipo="padrao", comprador=None):
     context = {}
 
     if request.method == "POST":
@@ -38,11 +40,14 @@ def transacoesNovo(request, tipo="padrao"):
             return render(request, 'sitewide/erro.html',
                           {'erro_descricao': erro_descricao})
     else:
+        empresa_ativa_id = Configuracao.objects.get().empresa_ativa.id
         if tipo == "venda":
-            context['form'] = TransacaoForm(initial={'vendedor': 1})
+            context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id})
             context['label'] = "Venda"
+            if comprador is not None:
+                context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id, 'comprador': comprador})
         elif tipo == "compra":
-            context['form'] = TransacaoForm(initial={'comprador': 1})
+            context['form'] = TransacaoForm(initial={'comprador': empresa_ativa_id})
             context['label'] = "Compra"
         else:
             # padrao
@@ -59,6 +64,8 @@ def transacoesCompra(request):
 def transacoesVenda(request):
     return transacoesNovo(request, "venda")
 
+def transacoesVendaCliente(request, cliente_id):
+    return transacoesNovo(request, "venda", cliente_id)
 
 def transacoesVer(request, transacao_id):
     transacao = get_object_or_404(Transacao, pk=transacao_id)

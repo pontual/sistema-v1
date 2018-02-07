@@ -6,6 +6,8 @@
 {% block mainTitle %}
 {{ cliente.nome }}
 
+<a href="{% url "movimento:transacoesVendaCliente" cliente_id=cliente.id %}" class="btn btn-primary">Venda Nova</a>
+
 <a href="{% url "registros:clientesEditar" cliente_id=cliente.id %}" class="btn btn-secondary">Editar</a>
 
 <a href="{% url "registros:clientesConfirmarApagar" cliente_id=cliente.id %}" class="btn btn-danger">Apagar</a>
@@ -25,7 +27,7 @@
         <a class="nav-link active" id="ficha-tab" data-toggle="tab" href="#ficha" role="tab" aria-controls="ficha" aria-selected="true">Ficha</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="compras-tab" data-toggle="tab" href="#compras" role="tab" aria-controls="compras" aria-selected="false">Compras</a>
+        <a class="nav-link" id="vendas-tab" data-toggle="tab" href="#vendas" role="tab" aria-controls="vendas" aria-selected="false">Vendas</a>
     </li>
 </ul>
 
@@ -63,8 +65,8 @@
             </table>
         </p>
     </div>
-    <div class="tab-pane fade" id="compras" role="tabpanel" aria-labelledby="compras-tab">
-        Totais de compras:
+    <div class="tab-pane fade" id="vendas" role="tabpanel" aria-labelledby="vendas-tab">
+        Totais de vendas:
         <table class="table-sm">
             <tbody>
                 {% for row in totais %}
@@ -76,13 +78,10 @@
             </tbody>
         </table>
 
-        {% for compra in compras %}
-        <p>
-            <a href="{% url "movimento:transacoesVer" compra.id %}">
-                {{ compra }}
-            </a>
-        </p>
-        {% endfor %}
+        {% with vendas as transacoes %}
+        {% include "movimento/transacoes/tabelas/transacoes.html" %}
+        {% endwith %}
+
     </div>
 </div>
 

@@ -12,16 +12,6 @@
 
 {% block main %}
 
-<table class="table-sm table-bordered">
-    {% for transacao in transacoes %}
-    <tr>
-        <td>
-            <a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}">
-                {{ transacao }}
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+{% include "movimento/transacoes/tabelas/transacoes.html" %}
 
 {% endblock %}

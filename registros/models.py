@@ -50,7 +50,7 @@ class Empresa(Model):
     class Meta:
         ordering = ['nome'] 
 
-    def compras(self):
+    def vendas(self):
         transacoes = self.empresa_compradora.all().order_by('-data', '-id')
         return transacoes
 
@@ -69,7 +69,7 @@ class Empresa(Model):
         return out
             
     def __str__(self):
-        return self.nome
+        return "{} [{}]".format(self.nome, self.id)
 
 class Funcionario(Model):
     user = models.OneToOneField(User, on_delete=CASCADE)
@@ -88,7 +88,7 @@ class Configuracao(Model):
         verbose_name_plural = "Configurações"
         
     def __str__(self):
-        return self.empresa_ativa.nome
+        return "Empresa ativa: " + self.empresa_ativa.nome
 
 
 class Produto(Model):

@@ -1,0 +1,43 @@
+<table class="table-sm table-bordered">
+    <thead>
+        <tr>
+            <td class="td-align-right">ID</td>
+            <td>Data</td>
+            <td>Vendedor</td>
+            <td>Comprador</td>
+            <td class="td-align-right">Moeda</td>
+            <td class="td-align-right">Valor</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for transacao in transacoes %}
+        <tr>
+            <td class="td-align-right">
+                <a href="{% url "movimento:transacoesVer" transacao_id=transacao.id %}">
+                    ID: {{ transacao.id }}
+                </a>
+            </td>
+            <td>
+                {{ transacao.data|date:"d/m/y " }}
+            </td>
+            <td>
+                <a href="{% url "registros:clientesVer" transacao.vendedor.id %}">
+                    {{ transacao.vendedor }}
+                </a>
+            </td>
+            <td>
+                <a href="{% url "registros:clientesVer" transacao.comprador.id %}">
+                    {{ transacao.comprador }}
+                </a>
+            </td>
+            <td class="td-align-right">
+                {{ transacao.moeda }}
+            </td>
+            <td class="td-align-right">
+                {{ transacao.total }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

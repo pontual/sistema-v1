@@ -27,16 +27,9 @@
 <br><br>
 
 <p>
-    {{ transacao }}
+    Total: {{ transacao.moeda }} {{ transacao.total }}
 </p>
-
-{% for item in itensDeLinha %}
-<p>
-    {{ item }}
-</p>
-{% endfor %}
-
-
-Total: {{ transacao.total }}
+   
+{% include "movimento/transacoes/tabelas/itensDeLinhaTotal.html" %}
 
 {% endblock %}

@@ -1,0 +1,43 @@
+<table class="table-sm table-bordered">
+    <thead>
+        <tr>
+            <td>Código</td>
+            <td>Nome</td>
+            <td class="td-align-right">Qtde.</td>
+            <td>Moeda</td>
+            <td class="td-align-right">Unitário</td>
+            <td class="td-align-right">Total</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in itensDeLinha %}
+        <tr>
+            <td>
+                <a href="{% url "registros:produtosVer" item.produto.id %}">
+                    {{ item.produto.codigo }}
+                </a>
+            </td>
+            <td>
+                <a href="{% url "registros:produtosVer" item.produto.id %}">
+                    {{ item.produto.nome }}
+                </a>
+            </td>
+            <td class="td-align-right">{{ item.qtde }}</td>
+            <td class="td-align-right">{{ item.transacao.moeda.codigo }}</td>
+            <td class="td-align-right">{{ item.preco_unitario }}</td>        
+            <td class="td-align-right">{{ item.total }}</td>        
+        </tr>
+        {% endfor %}
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>{{ transacao.total }}</td>
+        </tr>
+
+    </tbody>
+</table>

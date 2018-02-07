@@ -1,7 +1,7 @@
 To-do
 -----
 
-
+o produtosVer: compras, vendas table
 
 Wishlist
 --------
