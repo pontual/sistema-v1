@@ -20,7 +20,9 @@ def transacoes(request):
 
 def transacoesNovo(request, tipo="padrao", comprador=None):
     context = {}
-
+    configuracao = Configuracao.objects.get()
+    moeda_principal = configuracao.moeda_principal.id
+    
     if request.method == "POST":
         form = TransacaoForm(request.POST)
         if form.is_valid():
@@ -40,18 +42,18 @@ def transacoesNovo(request, tipo="padrao", comprador=None):
             return render(request, 'sitewide/erro.html',
                           {'erro_descricao': erro_descricao})
     else:
-        empresa_ativa_id = Configuracao.objects.get().empresa_ativa.id
+        empresa_ativa_id = configuracao.empresa_ativa.id
         if tipo == "venda":
-            context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id})
+            context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id, 'moeda': moeda_principal})
             context['label'] = "Venda"
             if comprador is not None:
-                context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id, 'comprador': comprador})
+                context['form'] = TransacaoForm(initial={'vendedor': empresa_ativa_id, 'comprador': comprador, 'moeda': moeda_principal})
         elif tipo == "compra":
-            context['form'] = TransacaoForm(initial={'comprador': empresa_ativa_id})
+            context['form'] = TransacaoForm(initial={'comprador': empresa_ativa_id, 'moeda': moeda_principal})
             context['label'] = "Compra"
         else:
             # padrao
-            context['form'] = TransacaoForm()
+            context['form'] = TransacaoForm(initial={'moeda': moeda_principal})
             context['label'] = "Transação"
                         
         context['formset'] = ItemDeLinhaFormSet()

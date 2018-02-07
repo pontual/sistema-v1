@@ -83,6 +83,7 @@ class Funcionario(Model):
 
 class Configuracao(Model):
     empresa_ativa = ForeignKey(Empresa, blank=True, null=True, on_delete=SET_NULL)
+    moeda_principal = ForeignKey(Moeda, blank=True, null=True, on_delete=SET_NULL)
 
     class Meta:
         verbose_name_plural = "Configurações"

@@ -1,9 +1,10 @@
 <table class="table-sm table-bordered">
     <thead>
         <tr>
-            <td class="td-align-right">Tr. ID</td>
-            <td>Código</td>
-            <td>Nome</td>
+            <td class="td-align-right">ID</td>
+            <td>Data</td>
+            <td>Vendedor</td>
+            <td>Comprador</td>
             <td class="td-align-right">Qtde.</td>
             <td>Moeda</td>
             <td class="td-align-right">Unitário</td>
@@ -20,13 +21,16 @@
                 </a>
             </td>
             <td>
-                <a href="{% url "registros:produtosVer" item.produto.id %}">
-                    {{ item.produto.codigo }}
+                {{ item.transacao.data|date:"d/m/y" }}
+            </td>
+            <td>
+                <a href="{% url "registros:clientesVer" item.transacao.vendedor.id %}">
+                   {{ item.transacao.vendedor }}
                 </a>
             </td>
             <td>
-                <a href="{% url "registros:produtosVer" item.produto.id %}">
-                    {{ item.produto.nome }}
+                <a href="{% url "registros:clientesVer" item.transacao.comprador.id %}">
+                    {{ item.transacao.comprador }}
                 </a>
             </td>
             <td class="td-align-right">{{ item.qtde }}</td>

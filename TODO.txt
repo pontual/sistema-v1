@@ -1,10 +1,12 @@
 To-do
 -----
 
-o produtosVer: compras, vendas table
+
 
 Wishlist
 --------
+
+o Cliente address - show on Google maps
 
 o Produtos - novo: generate thumbnail; currently loading full image and setting width
 
@@ -14,8 +16,11 @@ o paginate clientes
 
 o paginate produtos
 
-o Cliente address - show on Google maps
+o Nova venda autofocus first qtde
 
+o ProdutosVer: sum vendas
+
+o Advanced transaction search (by date, cliente)
 
 Setup
 -----
