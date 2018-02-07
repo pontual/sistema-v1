@@ -34,7 +34,7 @@ class MenuItem(Model):
 
 class Item(Model):
     produto = models.OneToOneField(Produto, on_delete=CASCADE)
-    listas = models.ManyToManyField(Lista)
+    listas = models.ManyToManyField(Lista, blank=True)
     
     class Meta:
         verbose_name_plural = "Itens"
