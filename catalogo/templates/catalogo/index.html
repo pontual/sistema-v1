@@ -1,0 +1,29 @@
+{% extends 'sitewide/bootstrap/base.html' %}
+
+{% block title %}Catálogo{% endblock %}
+
+{% block mainTitle %}Catálogo{% endblock %}
+
+{% block main %}
+
+CATALOGO
+
+{% for pasta in pastas %}
+<p>
+    {{ pasta }}
+    {% for menu_item in pasta.menuitem_set.all %}
+    <p>
+        {{ menu_item }}
+        {{ menu_item.lista }}
+        
+        {% for item in menu_item.lista.item_set.all %}
+        <p>
+            {{ item }}
+        </p>
+        {% endfor %}
+    </p>
+    {% endfor %}
+</p>
+{% endfor %}
+
+{% endblock %}
