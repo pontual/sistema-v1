@@ -39,9 +39,11 @@
         </p>
 
         <p>
-            {{ cliente.rua }}, {{ cliente.cidade }}, {{ cliente.estado }}
-            <br>
-            CEP {{ cliente.cep }}
+            <a href="https://www.google.com/maps/place/{{ gmaps_place }}" target="_blank">
+                {{ cliente.rua }}, {{ cliente.cidade }}, {{ cliente.estado }}
+                <br>
+                CEP {{ cliente.cep }}
+            </a>
         </p>
 
         <p>

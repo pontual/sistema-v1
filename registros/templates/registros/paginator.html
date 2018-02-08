@@ -1,8 +1,8 @@
-{% if curPage.has_other_pages %}
+{% if current_page.has_other_pages %}
 <ul class="pagination justify-content-center">
-    {% if curPage.has_previous %}
+    {% if current_page.has_previous %}
     <li class="page-item">
-        <a class="page-link" href="?page={{ curPage.previous_page_number }}">
+        <a class="page-link" href="?page={{ current_page.previous_page_number }}">
             &laquo;
         </a>
     </li>
@@ -15,7 +15,7 @@
     {% endif %}
 
     {% for i in show_page_range %}
-    {% if curPage.number == i %}
+    {% if current_page.number == i %}
     <li class="page-item active">
         <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
     </li>
@@ -26,9 +26,9 @@
     {% endif %}
     {% endfor %}
     
-    {% if curPage.has_next %}
+    {% if current_page.has_next %}
     <li class="page-item">
-        <a class="page-link" href="?page={{ curPage.next_page_number }}">
+        <a class="page-link" href="?page={{ current_page.next_page_number }}">
             &raquo;
         </a>
     </li>

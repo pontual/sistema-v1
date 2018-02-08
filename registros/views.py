@@ -144,8 +144,9 @@ def clientesVer(request, cliente_id):
     cliente = get_object_or_404(Empresa, pk=cliente_id)
     vendas = cliente.vendas()
     totais = cliente.totais()
+    gmaps_place = "{} {} {} CEP {}".format(cliente.rua, cliente.cidade, cliente.estado, cliente.cep).replace(" ", "+")
     
-    context = {'cliente': cliente, 'vendas': vendas, 'totais': totais}
+    context = {'cliente': cliente, 'vendas': vendas, 'totais': totais, 'gmaps_place': gmaps_place}
     return render(request, 'registros/clientes/ver.html', context)
 
 

@@ -6,26 +6,20 @@ To-do
 Wishlist
 --------
 
-o Cliente address - show on Google maps
-
 o Produtos - novo: generate thumbnail; currently loading full image and setting width
 
 o Transacao Nova - JavaScript add more rows
 
-o paginate clientes
-
-o paginate produtos
-
-o Nova venda autofocus first qtde
+o Venda Nova autofocus first qtde
 
 o ProdutosVer: sum vendas
 
-o Advanced transaction search (by date, cliente)
+o Advanced transaction search (by date range, cliente, produto)
 
 Setup
 -----
 
-o Resize a bunch of fotos to 640x480 using a script and pillow
+o Resize a bunch of fotos to 640x480 using "setup/resize_photos.py"
 
 o Bulk add produtos, about 30
 
