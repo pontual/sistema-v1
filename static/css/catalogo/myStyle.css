@@ -1,0 +1,155 @@
+html, body {
+    height: 100%;
+}
+
+a:link, a:visited, a:active {
+    color: #a90102;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #38d;
+}
+
+a.ui-link:link, a.ui-link:visited, a.ui-link:active {
+    color: #a90102;
+    text-decoration: none;
+}
+
+a.ui-link:hover {
+    color: #38d;
+}
+
+#menu a:link, #menu a:visited {
+    color: #000;
+    font-weight: normal;
+}
+
+#menu a:active, #menu a:hover {
+    color: #a90102;
+    font-weight: normal;
+}
+
+#menu a.submenu-link:link, #menu a.submenu-link:visited {
+    color: #600;
+    font-weight: normal;
+    white-space: normal;
+}
+
+#menu a.submenu-link:active, #menu a.submenu-link:hover {
+    color: #a90102;
+    font-weight: normal;
+    white-space: normal;
+}
+
+#mapa-page {
+    height: 90%;
+}
+
+.center-div {
+    width: 100%;  /* previously 95% */
+    height: 100%;
+    text-align: center;
+    padding: 0; 
+}
+
+/* allow header title to expand further
+   http://stackoverflow.com/questions/14620482/jquery-mobile-header-cut-off
+   */
+
+.ui-title {
+    margin: 0 10% !important;
+}
+
+.pontual_header {
+    font-size: 1.8em;
+    line-height: 1.9em;
+    text-align: center;
+    background-color: #a90102;
+    color: #fff;
+}
+
+.info_header {
+    font-size: 1.4em;
+    text-align: center;
+    color: #a90102;
+    border-bottom: 1px solid #a90102;
+}
+
+.info_header a {
+    font-weight: normal;
+}
+
+.info_table {
+    padding: 10px 0 0 0;
+    font-size: 1.0em;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.info_table a {
+    font-weight: normal;
+}
+
+
+.table_left {
+    text-align: left;
+}
+
+.table_vertical_bottom {
+    vertical-align: bottom;
+}
+
+
+.footer {
+    text-align: center;
+}
+
+.panel_container {
+    margin: 0;
+    background-image: url('/fotos/containers.jpg');
+    height: 500px;
+}
+
+.not_found {
+    text-align: center;
+    font-size: 1.6em;
+    margin-top: 40px;
+    color: #a90102;
+    background-color: rgba(255, 255, 255, 085);
+}
+
+.index_menu {
+    font-size: 1.6em;
+}
+
+.pages {
+    font-size: 1.4em;
+    background-color: rgba(255, 230, 230, 0.8);
+}
+
+iframe {
+    background-color: #555;
+    background-image: url("img/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+}
+
+.no-ellipsis {
+    white-space: normal;
+}
+
+.gerada {
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.categoria_nome {
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 1.2em;
+}
+
+.busca_pagina {
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9em;
+}

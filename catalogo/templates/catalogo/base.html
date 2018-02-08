@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Pontual Import Brindes - Pontual Exportação e Importação Ltda. - Homepage</title>
+        <link rel="stylesheet" href="{% static "css/catalogo/myFonts.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/jquery.mobile-1.4.5.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/themes/jquery.mobile.icons.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/themes/ptl2016.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/drift-basic.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/materialCard.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/menuStyle.css" %}">
+        <link rel="stylesheet" href="{% static "css/catalogo/myStyle.css" %}">
+    </head>
+    <body>
+        <script src="{% static "js/catalogo/jquery-1.12.4.min.js" %}"></script>
+        <script src="{% static "js/catalogo/jquery.mobile-1.4.5.min.js" %}"></script>
+        <script src="{% static "js/catalogo/jquery.mobile-panel-hack.js" %}"></script>
+        <script src="{% static "js/catalogo/drift.min.js" %}"></script>
+
+        {% block menu %}{% endblock %}
+
+
+        <!-- Dynamic page title in data-title -->
+        <div data-role="page" data-theme="a" data-title="Pontual Import Brindes - Pontual Exportação e Importação Ltda. - Homepage" data-ajax="false" id="produtos-page">
+
+            <!-- HEADER -->
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="overflow: hidden;">
+                
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <a href="#menu" data-rel="panel" class="ui-btn-left ui-btn ui-btn-icon-left ui-icon-bars" onclick="$('body,html').animate({scrollTop:0},150);">Menu</a>
+                        </li>
+
+                        <li>
+                            <!-- SEARCH -->
+                            <form action="busca.php" method="GET" data-ajax="false">
+                                <input name="q" id="search" value="" placeholder="Busca" type="search" data-mini="true">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div> <!-- END Header -->
+
+            <div class="center-div" data-role="content">
+
+                <!-- Endereço, Telefones -->
+                
+                <table class="info_table">
+                    <tr>
+                        <td>
+                            <a href="index.php" data-ajax="false">
+                                <img src="{% static "css/catalogo/img/logo.jpg" %}" alt="Logo">
+                            </a>
+                        </td>
+                        <td class="info_header table_left table_vertical_bottom">
+                            <!-- Pontual Import Brindes -->
+                            <a href="index.php" data-ajax="false">
+                                Pontual Import Brindes            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="mapa.php" data-ajax="false">
+                                <img src="{% static "css/catalogo/img/icomoon-location.png" %}" alt="Endereço" title="Localização">
+                            </a>
+                        </td>
+                        <td class="table_left">
+                            <a href="mapa.php" data-ajax="false">
+                                <!--
+                                R. Antônio de Andrade, 109 - Canindé<br>
+                                São Paulo, SP - CEP 03034-080
+                                -->
+                                Rua Rio Vermelho, 13 - Canindé<br>
+                                São Paulo, SP - CEP 03034-110            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="tel:01133128845" data-ajax="false">
+                                <img src="{% static "css/catalogo/img/icomoon-phone.png" %}" alt="Telefone" title="Telefone">
+                            </a>
+                        </td>
+                        <td class="table_left">
+                            <a href="tel:01133128845" data-ajax="false">(11) 3312-8845</a>
+                            / <a href='tel:01127388935' data-ajax='false'>2738-8935</a>        </td>
+                    </tr>
+                </table>
+
+                
+                <script>
+                 function openMenu() {
+                     $(window).scrollTop(0);
+                     $(window).scrollLeft(0);
+                     $("#menu").panel("open");
+                 }
+                </script>
+
+                {% block main %}{% endblock %}
+
+            </div>
+        </div>
+        
+        <script src="{% static "js/catalogo/menuSetup.js" %}"></script>
+        <script src="{% static "js/catalogo/dynamicPopup.js" %}"></script>
+        
+    </body>
+</html>

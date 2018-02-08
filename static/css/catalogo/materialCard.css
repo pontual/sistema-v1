@@ -1,0 +1,27 @@
+/* https://codepen.io/sdthornton/pen/wBZdqX */
+/* Material Design Box Shadows by Samuel Thornton */
+
+.card {
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    width: 220px;
+    /* height: 260px; */
+    padding: 10px;
+    margin: 1rem;
+    position: relative;
+    vertical-align: top; 
+}
+
+.card-3 {
+    box-shadow: 0 10px 20px
+    rgba(0,0,0,0.19), 0 6px 6px
+    rgba(0,0,0,0.23);
+}
+
+.card-3:hover {
+    box-shadow: 0 14px 28px
+    rgba(0,0,0,0.25), 0 10px 10px
+    rgba(0,0,0,0.29);
+}
+
