@@ -7,7 +7,7 @@ $(document).on("pagecreate", "#produtos-page", function() {
     // var header = '<div data-role="header"><h2>' + short.substring(5) + '</h2></div>';
     var header = '<div data-role="header"><h2>Toque para ampliar</h2></div>';
 
-    var img = '<img src="/fotos/' + short + '.jpg" data-zoom="/fotos/' + short + '.jpg" id="img-' + short + '" alt="foto" class="photo">';
+    var img = '<img src="/media/products/' + short + '.jpg" data-zoom="/media/products/' + short + '.jpg" id="img-' + short + '" alt="foto" class="photo">';
     var popup = '<div data-role="popup" id="popup-' + short + '" data-short="' + short + '" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15"></div>';
 
     $(header).appendTo($(popup)

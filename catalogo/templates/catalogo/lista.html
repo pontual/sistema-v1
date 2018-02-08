@@ -1,4 +1,5 @@
 {% extends 'catalogo/base.html' %}
+{% load static %}
 
 {% block title %}Catálogo{% endblock %}
 
@@ -6,6 +7,20 @@
 
 {% block main %}
 
-LISTA
+{% for item in itens %}
+
+<!-- CARD -->
+<div class='card card-3'>
+    <a href='#' class='produtos' id='{{ item.produto.codigo }}'>
+        <img class="card-img-thumb" src='{% if item.produto.foto %}{{ item.produto.foto.url }}{% else %}{% static "img/question_mark.png" %}{% endif %}' alt='{{ item.produto.codigo }}'>
+    </a><br>
+    
+    {{ item.produto.codigo }}<br>
+    {{ item.produto.nome }}<br>
+    {{ item.produto.por_caixa }} pçs por caixa
+</div>
+<!-- END CARD -->
+
+{% endfor %}
 
 {% endblock %}

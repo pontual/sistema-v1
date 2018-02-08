@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import MenuPasta
+from .models import MenuPasta, Lista
 
 def index(request):
     pastas = MenuPasta.objects.all().order_by('nome')
@@ -10,5 +10,7 @@ def index(request):
 
 def lista(request, lista_id):
     pastas = MenuPasta.objects.all().order_by('nome')
-
-    return render(request, 'catalogo/lista.html', {'pastas': pastas})
+    lista = Lista.objects.get(pk=lista_id)
+    itens = lista.item_set.all()
+    
+    return render(request, 'catalogo/lista.html', {'pastas': pastas, 'itens': itens})
