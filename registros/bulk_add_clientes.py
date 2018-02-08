@@ -2,6 +2,8 @@ import os
 import csv
 from random import randint
 
+from django.db import transaction
+
 from registros.models import Empresa
 
 # Run inside python manage.py shell
@@ -9,7 +11,8 @@ from registros.models import Empresa
 # from registros.bulk_add_clientes import add_clientes
 # add_clientes()
 
-CLIENTES_CSV = "/home/heitor/sistema/setup/clientes.csv"
+# CLIENTES_CSV = "/home/heitor/sistema/setup/clientes.csv"
+CLIENTES_CSV = "C:/Users/heitor/Desktop/emacs-24.3/bin/sistema/setup/clientes.csv"
 
 def randomCNPJ():
     a = randint(2, 29)
@@ -25,8 +28,9 @@ def randomIE():
     d = randint(0, 9)
     return "{:03d}.{:03d}.{:03d}-{}".format(a, b, c, d)
 
+@transaction.atomic
 def add_clientes():
-    with open(CLIENTES_CSV, newline='') as f:
+    with open(CLIENTES_CSV, newline='', encoding='latin-1') as f:
         reader = csv.reader(f, delimiter=",")
         for row in reader:
             Empresa.objects.create(nome=row[0],

@@ -48,6 +48,7 @@ class Empresa(Model):
     vendedor = ForeignKey('Funcionario', blank=True, null=True, on_delete=SET_NULL)
     
     class Meta:
+        verbose_name_plural = "Funcionários" 
         ordering = ['nome'] 
 
     def vendas(self):

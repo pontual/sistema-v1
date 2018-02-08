@@ -10,5 +10,9 @@ The initial secret key has been replaced with 'xxxxx...' in settings.orig.py
 
 Front-end: Bootstrap 4
 
+There are no duplicate restrictions.
+
+In Pontual, sometimes the factory sent products with slight color differences, but with the same code.
+
 See TODO.txt
 

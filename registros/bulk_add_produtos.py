@@ -3,6 +3,8 @@ import csv
 from random import choice
 
 from django.core.files import File
+from django.db import transaction
+
 from registros.models import Produto
 from setup.produtos import PRODUTO_LIST
 
@@ -25,10 +27,11 @@ def add_produto(codigo, nome, por_caixa):
     Produto.objects.create(codigo=codigo, nome=nome, por_caixa=por_caixa,
                            foto=File(open(codigo + ".jpg", "rb"))).save()
 
-    
+
+@transaction.atomic
 def add_produtos():
     produto_nome = {}
-    with open(PRODUTOS_NOME_CSV, newline='') as f:
+    with open(PRODUTOS_NOME_CSV, newline='', encoding='latin-1') as f:
         reader = csv.reader(f, delimiter=",")
         for row in reader:
             print(row[0], row[1])

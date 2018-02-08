@@ -55,7 +55,12 @@
     <tr>
         <td>
             <a href="{% url "registros:produtosVer" produto.id %}">
-                {{ produto }}
+                {{ produto.codigo }}
+            </a>
+        </td>
+        <td>
+            <a href="{% url "registros:produtosVer" produto.id %}">
+                {{ produto.nome }}
             </a>
         </td>
     </tr>
