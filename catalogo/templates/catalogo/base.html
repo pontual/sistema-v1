@@ -21,7 +21,7 @@
         <script src="{% static "js/catalogo/jquery.mobile-panel-hack.js" %}"></script>
         <script src="{% static "js/catalogo/drift.min.js" %}"></script>
 
-        {% block menu %}{% endblock %}
+        {% include "catalogo/menu.html" %}
 
 
         <!-- Dynamic page title in data-title -->
@@ -53,13 +53,13 @@
                 <table class="info_table">
                     <tr>
                         <td>
-                            <a href="index.php" data-ajax="false">
+                            <a href="{% url "catalogo:index" %}" data-ajax="false">
                                 <img src="{% static "css/catalogo/img/logo.jpg" %}" alt="Logo">
                             </a>
                         </td>
                         <td class="info_header table_left table_vertical_bottom">
                             <!-- Pontual Import Brindes -->
-                            <a href="index.php" data-ajax="false">
+                            <a href="{% url "catalogo:index" %}" data-ajax="false">
                                 Pontual Import Brindes            </a>
                         </td>
                     </tr>

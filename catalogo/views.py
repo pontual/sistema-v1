@@ -11,4 +11,4 @@ def index(request):
 def lista(request, lista_id):
     pastas = MenuPasta.objects.all().order_by('nome')
 
-    return render(request, 'catalogo/index.html', {'pastas': pastas})
+    return render(request, 'catalogo/lista.html', {'pastas': pastas})

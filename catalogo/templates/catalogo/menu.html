@@ -1,0 +1,38 @@
+<!-- MENU -->
+<div data-role="panel" class="jqm-navmenu-panel" data-position="left" id="menu" data-display="overlay" data-theme="b" data-ajax="false">
+    <ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+
+        <li data-icon="home"><a href="{% url "catalogo:index" %}" data-ajax="false">Home</a></li>
+
+        {% for pasta in pastas %}
+
+        {% with pasta_length=pasta.menuitem_set.all|length %}
+        
+        {% if pasta_length == 1 %}
+        <li data-icon='false'>
+            <a href="{% url "catalogo:lista" pasta.menuitem_set.first.lista.id %}" data-ajax='false'>
+                <span class='no-ellipsis'>{{ pasta.menuitem_set.first.nome }}</span>
+            </a>
+        </li>
+
+        {% elif pasta_length > 1 %}
+        <li data-role='collapsible' data-collapsed-icon='carat-d' data-expanded-icon='carat-u' data-iconpos='right' data-inset='false'>
+            <h3><span class='no-ellipsis'>{{ pasta.nome }}</span></h3>
+            <ul>
+                {% for menu_item in pasta.menuitem_set.all %}
+                <li data-icon='false'>
+                    <a href="{% url "catalogo:lista" menu_item.lista.id %}" class='submenu-link' data-ajax='false'>
+                        <span>{{ menu_item.nome }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% else %}
+        <!-- Pasta {{ pasta.nome }} vazia -->
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </ul>
+</div>
+<!-- END MENU -->
