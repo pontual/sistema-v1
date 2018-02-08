@@ -12,6 +12,10 @@
 
 {% block main %}
 
+{% with curPage=clientes %}
+{% include "registros/paginator.html" %}
+{% endwith %}
+
 {% for cliente in clientes %}
 <div class="card card-med inline-block">
     <div class="card-body">

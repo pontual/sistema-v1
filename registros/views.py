@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Lower
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from movimento.models import ItemDeLinha
 
@@ -12,12 +13,31 @@ def index(request):
     return render(request, 'registros/index.html')
 
 
+# PAGINATOR SUB-RANGE
+
+def subRange(lastPage, currentPage, width):
+    return range(max(1, currentPage-width), min(lastPage, currentPage+width)+1)
+    
+    
 # PRODUTOS
 
 def produtos(request):
     produtos = Produto.objects.all().order_by('codigo')
 
-    context = {'produtos': produtos}
+    PRODUTOS_POR_PAGINA = 8
+    LINKS_NO_PAGINATOR = 5
+    
+    paginator = Paginator(produtos, PRODUTOS_POR_PAGINA)
+    page = int(request.GET.get('page', 1))
+
+    try:
+        produtos_page = paginator.page(page)
+    except PageNotAnInteger:
+        produtos_page = paginator.page(1)
+    except EmptyPage:
+        produtos_page = paginator.page(paginator.num_pages)
+        
+    context = {'produtos': produtos_page, 'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
     return render(request, 'registros/produtos/todos.html', context)
 
 
@@ -83,8 +103,21 @@ def produtosApagar(request, produto_id):
 
 def clientes(request):
     clientes = Empresa.objects.all().order_by(Lower('nome'))
+
+    CLIENTES_POR_PAGINA = 12
+    LINKS_NO_PAGINATOR = 5
     
-    context = {'clientes': clientes}
+    paginator = Paginator(clientes, CLIENTES_POR_PAGINA)
+    page = int(request.GET.get('page', 1))
+
+    try:
+        clientes_page = paginator.page(page)
+    except PageNotAnInteger:
+        clientes_page = paginator.page(1)
+    except EmptyPage:
+        clientes_page = paginator.page(paginator.num_pages)
+        
+    context = {'clientes': clientes_page, 'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
     return render(request, 'registros/clientes/todos.html', context)
 
 

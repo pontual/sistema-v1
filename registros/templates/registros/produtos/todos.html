@@ -13,6 +13,10 @@
 
 {% block main %}
 
+{% with curPage=produtos %}
+{% include "registros/paginator.html" %}
+{% endwith %}
+
 {% for produto in produtos %}
 <div class="card card-small inline-block">
     <a href="{% url "registros:produtosVer" produto_id=produto.id %}">

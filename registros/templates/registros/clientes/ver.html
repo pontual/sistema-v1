@@ -78,7 +78,7 @@
             </tbody>
         </table>
 
-        {% with vendas as transacoes %}
+        {% with transacoes=vendas %}
         {% include "movimento/transacoes/tabelas/transacoes.html" %}
         {% endwith %}
 
