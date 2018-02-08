@@ -7,3 +7,8 @@ def index(request):
     
     return render(request, 'catalogo/index.html', {'pastas': pastas})
 
+
+def lista(request, lista_id):
+    pastas = MenuPasta.objects.all().order_by('nome')
+
+    return render(request, 'catalogo/index.html', {'pastas': pastas})

@@ -1,6 +1,7 @@
 To-do
 -----
 
+o catalogo busca / search
 
 
 Wishlist
@@ -36,3 +37,11 @@ o See registros/bulk_add_clientes.py
 
 > from registros.models import Empresa
 > Empresa.objects.create(nome="ABC Gifts", rua="Rua XV de Novembro, 123", bairro="Centro", cidade="São Paulo", estado="SP", cep="12345-001", pais="Brasil", contato="Luis", telefone="3322-1234", cadastro_nacional="23.123.455/0001-02", cadastro_estadual="02.442.112").save() 
+
+
+o Import every Produto as a Catalogo item
+
+python manage.py shell
+
+> from catalogo.import_produtos import import_all
+> import_all()

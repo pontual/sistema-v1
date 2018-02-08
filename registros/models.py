@@ -48,7 +48,6 @@ class Empresa(Model):
     vendedor = ForeignKey('Funcionario', blank=True, null=True, on_delete=SET_NULL)
     
     class Meta:
-        verbose_name_plural = "Funcionários" 
         ordering = ['nome'] 
 
     def vendas(self):
@@ -77,6 +76,7 @@ class Funcionario(Model):
     empregador = ForeignKey(Empresa, on_delete=SET_NULL, null=True)
 
     class Meta:
+        verbose_name_plural = "Funcionários" 
         ordering = ['user__username'] 
     
     def __str__(self):

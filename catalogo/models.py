@@ -9,6 +9,9 @@ from registros.models import Produto
 class MenuPasta(Model):
     nome = CharField(max_length=79)
 
+    class Meta:
+        ordering = ['nome']
+        
     def __str__(self):
         return self.nome
         
@@ -16,6 +19,9 @@ class MenuPasta(Model):
 class Lista(Model):
     nome = CharField(max_length=79)
 
+    class Meta:
+        ordering = ['nome']
+        
     def __str__(self):
         return self.nome
 
@@ -27,6 +33,7 @@ class MenuItem(Model):
 
     class Meta:
         verbose_name_plural = "Menu itens"
+        ordering = ['nome']        
         
     def __str__(self):
         return self.nome
@@ -38,7 +45,8 @@ class Item(Model):
     
     class Meta:
         verbose_name_plural = "Itens"
-
+        ordering = ["produto__codigo"]
+        
     def __str__(self):
         return "[{}] {}".format(self.produto.codigo, self.produto.nome)
 

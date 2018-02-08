@@ -13,11 +13,11 @@ from setup.produtos import PRODUTO_LIST
 # from registros.bulk_add_produtos import add_produtos
 # add_produtos()
 
-FOTO_DIR = "C:/users/heitor/sisfotos/"
-# FOTO_DIR = "/home/heitor/tmp/sisfotos/"
+# FOTO_DIR = "C:/users/heitor/sisfotos/"
+FOTO_DIR = "/home/heitor/tmp/sisfotos/"
 
-PRODUTOS_NOME_CSV = "C:/users/heitor/Desktop/emacs-24.3/bin/sistema/setup/produtos_nome.csv"
-# PRODUTOS_NOME_CSV = "/home/heitor/sistema/setup/produtos_nome.csv"
+# PRODUTOS_NOME_CSV = "C:/users/heitor/Desktop/emacs-24.3/bin/sistema/setup/produtos_nome.csv"
+PRODUTOS_NOME_CSV = "/home/heitor/sistema/setup/produtos_nome.csv"
 
 CAIXA_QTDE = [48, 50, 100, 24, 200]
 
