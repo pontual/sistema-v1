@@ -16,6 +16,7 @@ def index(request):
 # PAGINATOR SUB-RANGE
 
 def subRange(lastPage, currentPage, width):
+    currentPage = int(currentPage)
     return range(max(1, currentPage-width), min(lastPage, currentPage+width)+1)
     
     
@@ -28,7 +29,7 @@ def produtos(request):
     LINKS_NO_PAGINATOR = 5
     
     paginator = Paginator(produtos, PRODUTOS_POR_PAGINA)
-    page = int(request.GET.get('page', 1))
+    page = request.GET.get('page', 1)
 
     try:
         produtos_page = paginator.page(page)
@@ -37,7 +38,9 @@ def produtos(request):
     except EmptyPage:
         produtos_page = paginator.page(paginator.num_pages)
         
-    context = {'produtos': produtos_page, 'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
+    context = {'produtos': produtos_page,
+               'last_page': paginator.num_pages,
+               'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
     return render(request, 'registros/produtos/todos.html', context)
 
 
@@ -108,7 +111,7 @@ def clientes(request):
     LINKS_NO_PAGINATOR = 5
     
     paginator = Paginator(clientes, CLIENTES_POR_PAGINA)
-    page = int(request.GET.get('page', 1))
+    page = request.GET.get('page', 1)
 
     try:
         clientes_page = paginator.page(page)
@@ -117,7 +120,9 @@ def clientes(request):
     except EmptyPage:
         clientes_page = paginator.page(paginator.num_pages)
         
-    context = {'clientes': clientes_page, 'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
+    context = {'clientes': clientes_page,
+               'last_page': paginator.num_pages,
+               'show_page_range': subRange(paginator.num_pages, page, LINKS_NO_PAGINATOR)}
     return render(request, 'registros/clientes/todos.html', context)
 
 

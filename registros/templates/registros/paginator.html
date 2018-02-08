@@ -14,6 +14,12 @@
     </li>
     {% endif %}
 
+
+    <li class="page-item">
+        <a class="page-link" href="?page=1">Início</a>
+    </li>
+    
+    
     {% for i in show_page_range %}
     {% if current_page.number == i %}
     <li class="page-item active">
@@ -25,6 +31,12 @@
     </li>
     {% endif %}
     {% endfor %}
+
+
+    <li class="page-item">
+        <a class="page-link" href="?page={{ last_page }}">Fim</a>
+    </li>
+
     
     {% if current_page.has_next %}
     <li class="page-item">
@@ -32,6 +44,7 @@
             &raquo;
         </a>
     </li>
+
     {% else %}
     <li class="page-item disabled">
         <a class="page-link" href="#">

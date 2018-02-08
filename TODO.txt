@@ -21,7 +21,7 @@ Setup
 
 o Resize a bunch of fotos to 640x480 using "setup/resize_photos.py"
 
-o Bulk add produtos, about 30
+o See registros/bulk_add_produtos.py
 
 python manage.py shell
 
@@ -32,9 +32,7 @@ python manage.py shell
 > os.chdir("C:/users/heitor/sisfotos/")
 > Produto.objects.create(codigo="143303", nome="Power Bank 10400 mAh", por_caixa=100, foto=File(open("143303.jpg", 'rb'))).save()
 
-See setup/produtos
-
-o Bulk add clientes, about 30
+o See registros/bulk_add_clientes.py
 
 > from registros.models import Empresa
 > Empresa.objects.create(nome="ABC Gifts", rua="Rua XV de Novembro, 123", bairro="Centro", cidade="São Paulo", estado="SP", cep="12345-001", pais="Brasil", contato="Luis", telefone="3322-1234", cadastro_nacional="23.123.455/0001-02", cadastro_estadual="02.442.112").save() 

@@ -26,3 +26,7 @@ test
 # clientes
 /setup/clientes.*
 /setup/cliente.*
+/setup/*.xls
+/setup/*.XLS
+/setup/*.ods
+/setup/*.ODS
