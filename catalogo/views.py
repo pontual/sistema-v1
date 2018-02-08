@@ -13,4 +13,5 @@ def lista(request, lista_id):
     lista = Lista.objects.get(pk=lista_id)
     itens = lista.item_set.all()
     
-    return render(request, 'catalogo/lista.html', {'pastas': pastas, 'itens': itens})
+    return render(request, 'catalogo/lista.html',
+                  {'pastas': pastas, 'lista_nome': lista.nome, 'itens': itens})
