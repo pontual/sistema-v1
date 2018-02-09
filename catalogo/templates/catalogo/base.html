@@ -38,7 +38,7 @@
 
                         <li>
                             <!-- SEARCH -->
-                            <form action="busca.php" method="GET" data-ajax="false">
+                            <form action="{% url "catalogo:busca" %}" method="GET" data-ajax="false">
                                 <input name="q" id="search" value="" placeholder="Busca" type="search" data-mini="true">
                             </form>
                         </li>
@@ -65,12 +65,12 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="mapa.php" data-ajax="false">
+                            <a href="#" data-ajax="false">
                                 <img src="{% static "css/catalogo/img/icomoon-location.png" %}" alt="Endereço" title="Localização">
                             </a>
                         </td>
                         <td class="table_left">
-                            <a href="mapa.php" data-ajax="false">
+                            <a href="#" data-ajax="false">
                                 <!--
                                 R. Antônio de Andrade, 109 - Canindé<br>
                                 São Paulo, SP - CEP 03034-080
