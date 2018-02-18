@@ -59,3 +59,11 @@ Catalogo Setup:
 python manage.py shell
 from catalogo.import_produtos import import_all
 import_all()
+
+
+Catalogo PHP Structure:
+
+pasta
+categoria = lista
+link = menu_item
+produtos_de_categoria = item with lista
