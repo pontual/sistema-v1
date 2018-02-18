@@ -60,10 +60,19 @@ python manage.py shell
 from catalogo.import_produtos import import_all
 import_all()
 
+python manage.py shell
+from catalogo.import_pastas import import_all_pastas
+import_all_pastas()
 
-Catalogo PHP Structure:
+from catalogo.import_listas import import_all_listas
+import_all_listas()
 
-pasta
-categoria = lista
-link = menu_item
-produtos_de_categoria = item with lista
+from catalogo.import_menuitems import import_all_menuitems
+import_all_menuitems()
+
+from catalogo.link_produto_to_lista import link_produtos
+link_produtos()
+
+Finally, remove the # marks from menu itens and menu pastas
+
+in /media/products/ check: ls *.JPG

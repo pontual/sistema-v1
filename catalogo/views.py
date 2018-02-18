@@ -18,6 +18,8 @@ def lista(request, lista_id):
 
 
 def busca(request):
+    pastas = MenuPasta.objects.all().order_by('nome')
+
     query = request.GET['q']
 
     if query:
@@ -26,4 +28,4 @@ def busca(request):
         itens = Item.objects.none()
 
     return render(request, 'catalogo/busca_resultado.html',
-                  {'query': query, 'itens': itens})
+                  {'query': query, 'itens': itens, 'pastas': pastas})
