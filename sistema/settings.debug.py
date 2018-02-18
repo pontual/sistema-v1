@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'sitewide.apps.SitewideConfig',
+    'catalogo.apps.CatalogoConfig',
     'registros.apps.RegistrosConfig',
     'movimento.apps.MovimentoConfig',
     'django.contrib.admin',
